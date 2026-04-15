@@ -77,80 +77,57 @@ export default function Galeri() {
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="bg-white shadow-sm py-5">
-        <div className="container mx-auto px-4 flex items-center justify-center gap-10 text-center">
-          <div>
-            <p className="text-xl font-bold text-[#0d3b6e]">500+</p>
-            <p className="text-xs text-gray-500">Fotoğraf</p>
-          </div>
-          <div className="w-px h-8 bg-gray-200"></div>
-          <div>
-            <p className="text-xl font-bold text-[#0d3b6e]">48</p>
-            <p className="text-xs text-gray-500">Proje</p>
-          </div>
-          <div className="w-px h-8 bg-gray-200"></div>
-          <div>
-            <p className="text-xl font-bold text-[#0d3b6e]">18 Ülke</p>
-            <p className="text-xs text-gray-500">Saha Çalışması</p>
-          </div>
-        </div>
-      </div>
+      {/* Gallery */
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            {/* Category Filter */}
+            <div className="flex flex-wrap gap-3 justify-center mb-12">
+              {categories.map((cat, i) => (
+                <button
+                  key={i}
+                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${i === 0 ? 'bg-[#0d3b6e] text-white shadow-md' : 'bg-white text-gray-600 hover:bg-[#0d3b6e] hover:text-white border border-gray-200'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
 
-      {/* Gallery */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {categories.map((cat, i) => (
-              <button
-                key={i}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${i === 0 ? 'bg-[#0d3b6e] text-white shadow-md' : 'bg-white text-gray-600 hover:bg-[#0d3b6e] hover:text-white border border-gray-200'}`}
-              >
-                {cat}
+            {/* Photo Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]">
+              {photos.map((p, i) => (
+                <div
+                  key={i}
+                  className={`relative rounded-xl overflow-hidden group cursor-pointer ${p.span}`}
+                >
+                  <Image
+                    src={p.src}
+                    alt={p.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                    <span className="text-xs font-semibold text-[#e67e22] mb-1">{p.cat}</span>
+                    <h4 className="text-white font-bold text-sm leading-tight">{p.title}</h4>
+                    <p className="text-white/70 text-xs mt-1 flex items-center gap-1">
+                      <i className="fas fa-map-marker-alt text-[10px]"></i> {p.loc}
+                    </p>
+                  </div>
+                  <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <i className="fas fa-expand text-white text-xs"></i>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <button className="inline-flex items-center gap-2 border-2 border-[#0d3b6e] text-[#0d3b6e] font-semibold px-8 py-3 rounded-full hover:bg-[#0d3b6e] hover:text-white transition-all duration-300">
+                <i className="fas fa-images"></i> Daha Fazla Fotoğraf Yükle
               </button>
-            ))}
+            </div>
           </div>
+        </section>
 
-          {/* Photo Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]">
-            {photos.map((p, i) => (
-              <div
-                key={i}
-                className={`relative rounded-xl overflow-hidden group cursor-pointer ${p.span}`}
-              >
-                <Image
-                  src={p.src}
-                  alt={p.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <span className="text-xs font-semibold text-[#e67e22] mb-1">{p.cat}</span>
-                  <h4 className="text-white font-bold text-sm leading-tight">{p.title}</h4>
-                  <p className="text-white/70 text-xs mt-1 flex items-center gap-1">
-                    <i className="fas fa-map-marker-alt text-[10px]"></i> {p.loc}
-                  </p>
-                </div>
-                {/* Category badge */}
-                <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-0">
-                </div>
-                <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <i className="fas fa-expand text-white text-xs"></i>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <button className="inline-flex items-center gap-2 border-2 border-[#0d3b6e] text-[#0d3b6e] font-semibold px-8 py-3 rounded-full hover:bg-[#0d3b6e] hover:text-white transition-all duration-300">
-              <i className="fas fa-images"></i> Daha Fazla Fotoğraf Yükle
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
+      }
       <section className="py-16 bg-gradient-to-r from-[#0d3b6e] to-[#2471a3]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-3">Siz de Bu Anların Parçası Olun</h2>

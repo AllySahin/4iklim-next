@@ -1,7 +1,7 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-
-const amounts = ['50 ₺', '100 ₺', '250 ₺', '500 ₺', '1.000 ₺'];
 
 const trustItems = [
   { icon: 'fa-shield-halved', title: 'Güvenli Ödeme', desc: '256-bit SSL şifreleme ile korunan ödeme altyapısı' },
@@ -43,128 +43,78 @@ export default function Bagis() {
         </div>
       </div>
 
-      {/* Trust Stats Bar */}
-      <div className="bg-white shadow-md py-6">
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { val: '12.500+', label: 'Desteklenen Kişi' },
-            { val: '₺8.4M+', label: 'Toplam Bağış' },
-            { val: '%94', label: 'Sahaya Ulaşan Bağış' },
-            { val: '18 Ülke', label: 'Ulaştığımız Coğrafya' },
-          ].map((s, i) => (
-            <div key={i}>
-              <p className="text-2xl md:text-3xl font-bold text-[#059669]">{s.val}</p>
-              <p className="text-sm text-gray-500 mt-1">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Donation Section */}
+      {/* Main Donation Section */
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
-
-            {/* Donation Form - 3 cols */}
-            <div className="lg:col-span-3 bg-white rounded-2xl shadow-md p-8 md:p-10">
-              <h2 className="text-2xl font-bold text-[#0d3b6e] mb-2">Bağış Miktarı Seçin</h2>
-              <p className="text-gray-500 text-sm mb-8">Tek seferlik veya aylık düzenli bağış yapabilirsiniz.</p>
-
-              {/* Frequency Tabs */}
-              <div className="flex gap-3 mb-7">
-                <button className="flex-1 py-2.5 bg-[#059669] text-white font-semibold rounded-full text-sm transition-colors">
-                  Tek Seferlik
-                </button>
-                <button className="flex-1 py-2.5 border-2 border-[#059669] text-[#059669] font-semibold rounded-full text-sm hover:bg-[#059669]/10 transition-colors">
-                  Aylık Düzenli
-                </button>
-              </div>
-
-              {/* Amount Buttons */}
-              <div className="grid grid-cols-3 gap-3 mb-5">
-                {amounts.map((a, i) => (
-                  <button
-                    key={i}
-                    className={`py-3 rounded-xl font-bold text-sm border-2 transition-all ${i === 1 ? 'bg-[#059669] border-[#059669] text-white shadow-md' : 'border-gray-200 text-gray-700 hover:border-[#059669] hover:text-[#059669]'}`}
-                  >
-                    {a}
-                  </button>
-                ))}
-                <button className="py-3 rounded-xl font-semibold text-sm border-2 border-dashed border-gray-300 text-gray-500 hover:border-[#059669] hover:text-[#059669] transition-all col-span-1">
-                  Diğer
-                </button>
-              </div>
-
-              {/* Custom Amount Input */}
-              <div className="relative mb-7">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-semibold">₺</span>
-                <input
-                  type="number"
-                  placeholder="Miktar girin..."
-                  className="w-full pl-9 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#059669] text-gray-700 font-semibold"
-                />
-              </div>
-
-              {/* Area Selection */}
-              <div className="mb-7">
-                <label className="block text-sm font-semibold text-gray-600 mb-2">Bağış Alanı</label>
-                <select className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#059669] text-gray-700">
-                  <option>En İhtiyaçlı Alana (Genel)</option>
-                  <option>Gıda Yardımı</option>
-                  <option>Eğitim Projeleri</option>
-                  <option>Sağlık Hizmetleri</option>
-                  <option>Su & Sanitasyon</option>
-                  <option>Afet Yardımı</option>
-                </select>
-              </div>
-
-              {/* Payment Button */}
-              <button className="w-full bg-[#059669] hover:bg-[#047857] text-white font-bold py-4 rounded-xl text-lg transition-colors flex items-center justify-center gap-3 shadow-lg shadow-[#059669]/30">
-                <i className="fas fa-lock text-base"></i>
-                Güvenli Bağış Yap
-              </button>
-
-              <p className="text-center text-xs text-gray-400 mt-4 flex items-center justify-center gap-1">
-                <i className="fas fa-shield-halved text-[#059669]"></i>
-                256-bit SSL ile korunan güvenli ödeme altyapısı
+          <div className="max-w-4xl mx-auto">
+            
+            {/* Intro Text */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-[#0d3b6e] mb-4">Hesap Bilgilerimiz</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Bağışlarınızı aşağıdaki hesap numaralarına havale veya EFT yoluyla yapabilirsiniz. 
+                Bağışınızın kaydedilmesi için lütfen açıklama kısmına ad-soyad ve telefon numaranızı yazınız.
               </p>
             </div>
 
-            {/* Sidebar - 2 cols */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
-              {/* SMS */}
-              <div className="bg-[#0d3b6e] text-white rounded-2xl p-7 text-center">
-                <i className="fas fa-comment-sms text-4xl text-[#e67e22] mb-4"></i>
-                <h3 className="text-xl font-bold mb-2">SMS ile Bağış</h3>
-                <p className="text-white/75 text-sm mb-5">Tüm operatörlerden kolayca bağış yapın</p>
-                <div className="bg-white/10 rounded-xl p-4 mb-4">
-                  <p className="text-2xl font-bold tracking-wider mb-1"><span className="text-[#e67e22]">BAGIS</span></p>
-                  <p className="text-sm text-white/70">yazıp gönderin</p>
-                  <div className="w-8 h-px bg-white/30 mx-auto my-3"></div>
-                  <p className="text-4xl font-bold text-[#e67e22]">4444</p>
-                  <p className="text-sm text-white/70 mt-1">numarasına</p>
+            {/* Bank Accounts - Main Section */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-8">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 bg-[#e67e22]/10 rounded-xl flex items-center justify-center">
+                  <i className="fas fa-building-columns text-[#e67e22] text-xl"></i>
                 </div>
-                <p className="text-xs text-white/50">Her SMS = 50 ₺ bağış</p>
+                <div>
+                  <h3 className="text-xl font-bold text-[#0d3b6e]">Banka Hesaplarımız</h3>
+                  <p className="text-sm text-gray-500">Havale/EFT için aşağıdaki IBAN numaralarını kullanabilirsiniz</p>
+                </div>
               </div>
 
-              {/* Bank Accounts */}
-              <div className="bg-white rounded-2xl shadow-md p-7">
-                <h3 className="text-lg font-bold text-[#0d3b6e] mb-1 flex items-center gap-2">
-                  <i className="fas fa-building-columns text-[#e67e22]"></i> Banka Hesapları
-                </h3>
-                <p className="text-xs text-gray-500 mb-5">Havale/EFT için aşağıdaki IBAN numaralarını kullanın.</p>
-                <div className="space-y-3">
-                  {banks.map((b, i) => (
-                    <div key={i} className="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                      <p className="font-bold text-[#0d3b6e] text-sm mb-1">{b.name}</p>
-                      <p className="font-mono text-xs text-gray-600 mb-1">{b.iban}</p>
-                      <p className="text-xs text-gray-400">SWIFT: {b.swift}</p>
+              <div className="space-y-4 mb-6">
+                {banks.map((b, i) => {
+                  return (
+                    <div key={i} className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-2 border-gray-100 hover:border-[#059669] transition-all group">
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-[#0d3b6e] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i className={`fas ${b.logo} text-white`}></i>
+                          </div>
+                          <div>
+                            <p className="font-bold text-[#0d3b6e] text-lg">{b.name}</p>
+                            <p className="text-xs text-gray-500">SWIFT: {b.swift}</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => navigator.clipboard.writeText(b.iban)}
+                          className="px-3 py-1.5 bg-[#059669] hover:bg-[#047857] text-white text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 opacity-0 group-hover:opacity-100"
+                          title="IBAN'ı Kopyala"
+                        >
+                          <i className="fas fa-copy"></i> Kopyala
+                        </button>
+                      </div>
+                      <div className="bg-white p-4 rounded-lg border border-gray-200">
+                        <p className="text-xs text-gray-500 mb-1">IBAN Numarası</p>
+                        <p className="font-mono text-sm md:text-base font-bold text-gray-700 tracking-wider break-all">{b.iban}</p>
+                      </div>
                     </div>
-                  ))}
-                  <p className="text-xs text-gray-400 pt-1">Alıcı: <strong>4 İklim İnsani Yardım Derneği</strong></p>
+                  );
+                })}
+              </div>
+
+              <div className="bg-blue-50 border-l-4 border-[#0d3b6e] p-5 rounded-lg">
+                <div className="flex gap-3">
+                  <i className="fas fa-info-circle text-[#0d3b6e] mt-1"></i>
+                  <div>
+                    <p className="font-bold text-[#0d3b6e] mb-1 text-sm">Hesap Adı</p>
+                    <p className="text-gray-700 font-semibold">4 İklim İnsani Yardım Derneği</p>
+                    <p className="text-xs text-gray-500 mt-2">
+                      <i className="fas fa-check-circle text-[#059669] mr-1"></i>
+                      Tüm bağışlarınız vergi muafiyetinden yararlanır (GVK Md.89)
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>

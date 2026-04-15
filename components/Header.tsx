@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/projeler', label: 'Projelerimiz' },
   { href: '/haberler', label: 'Haberler' },
   { href: '/galeri', label: 'Galeri' },
-  { href: '/gonullu', label: 'Gönüllü Ol' },
   { href: '/iletisim', label: 'İletişim' },
 ];
 

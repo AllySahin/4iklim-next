@@ -8,26 +8,6 @@ export default function Home() {
       {/* Hero Slider */}
       <HeroSlider />
 
-      {/* Impact Stats Bar */}
-      <div className="bg-white shadow-md py-0">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
-            {[
-              { icon: 'fa-people-group', val: '12.500+', label: 'Desteklenen Kişi', color: 'text-[#0d3b6e]' },
-              { icon: 'fa-folder-open', val: '48', label: 'Tamamlanan Proje', color: 'text-[#e67e22]' },
-              { icon: 'fa-earth-europe', val: '18', label: 'Ülke', color: 'text-[#0d3b6e]' },
-              { icon: 'fa-hand-holding-heart', val: '₺8.4M+', label: 'Toplam Bağış', color: 'text-[#059669]' },
-            ].map((s, i) => (
-              <div key={i} className="text-center py-6 px-4">
-                <i className={`fas ${s.icon} text-2xl ${s.color} mb-2`}></i>
-                <p className={`text-2xl md:text-3xl font-black ${s.color}`}>{s.val}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main Campaign Banner */}
       <section className="w-full mt-10 md:mt-14 mb-0">
         <Link href="/kampanya" className="block w-full">
@@ -117,11 +97,6 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              {/* Floating stat card */}
-              <div className="absolute -bottom-6 -right-6 bg-[#0d3b6e] text-white rounded-2xl p-5 shadow-xl hidden md:block">
-                <p className="text-3xl font-black text-[#e67e22]">15+</p>
-                <p className="text-xs text-white/70">Yıllık Deneyim</p>
-              </div>
             </div>
 
             <div>
@@ -133,7 +108,7 @@ export default function Home() {
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  'Åeffaflık ve hesap verebilirlik ilkesiyle faaliyet gösteriyoruz.',
+                  'Şeffaflık ve hesap verebilirlik ilkesiyle faaliyet gösteriyoruz.',
                   'Yardımlarımızı ayrım gözetmeksizin tüm ihtiyaç sahiplerine ulaştırıyoruz.',
                   'Kısa vadeli yardım ve uzun vadeli kalkınma projelerini bir arada yürütüyoruz.',
                   'Bağışlarınızın %94\'ü doğrudan saha projelerine aktarılmaktadır.',
@@ -171,6 +146,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
+                slug: 'depremzede-konteyner-ev',
                 image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
                 badge: 'Barınma', badgeColor: 'bg-blue-600',
                 title: 'Depremzede Ailelere Konteyner Ev Projesi',
@@ -178,6 +154,7 @@ export default function Home() {
                 status: 'Devam Ediyor',
               },
               {
+                slug: 'okul-cantasi-kirtasiye',
                 image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80',
                 badge: 'Eğitim', badgeColor: 'bg-[#e67e22]',
                 title: 'Kırtasiye ve Eğitim Seti Dağıtımı',
@@ -185,6 +162,7 @@ export default function Home() {
                 status: 'Tamamlandı',
               },
               {
+                slug: 'ramazan-gida-paketi',
                 image: 'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=600&q=80',
                 badge: 'Gıda', badgeColor: 'bg-[#059669]',
                 title: 'Ramazan Gıda Paketi Dağıtımı',
@@ -192,7 +170,7 @@ export default function Home() {
                 status: 'Devam Ediyor',
               },
             ].map((project, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+              <Link key={i} href={`/projeler/${project.slug}`} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
                 <div className="relative h-52 overflow-hidden">
                   <Image
                     src={project.image}
@@ -208,11 +186,11 @@ export default function Home() {
                 <div className="p-6">
                   <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{project.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed mb-5">{project.desc}</p>
-                  <Link href="/projeler" className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm hover:text-[#ca6f1e]">
+                  <div className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm group-hover:text-[#ca6f1e]">
                     Detayları gör <i className="fas fa-arrow-right text-xs"></i>
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

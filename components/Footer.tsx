@@ -143,25 +143,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Impact Numbers Bar */}
-      <div className="border-t border-white/10 bg-[#0d3b6e]/50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { val: '12.500+', label: 'Desteklenen Kişi' },
-              { val: '48', label: 'Aktif Proje' },
-              { val: '18 Ülke', label: 'Ulaşılan Coğrafya' },
-              { val: '320+', label: 'Gönüllü' },
-            ].map((s, i) => (
-              <div key={i}>
-                <p className="text-xl font-black text-[#e67e22]">{s.val}</p>
-                <p className="text-xs text-white/50 mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-4">
