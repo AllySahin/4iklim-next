@@ -1,0 +1,16 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#21618c" />
+      <stop offset="100%" stop-color="#3498db" />
+    </linearGradient>
+    <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 40L40 0H20L0 20M40 40V20L20 40" fill="#ffffff" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#grad)" />
+  <rect width="800" height="600" fill="url(#pattern)" />
+  <circle cx="400" cy="270" r="120" fill="#ffffff" fill-opacity="0.1" />
+  <text x="400" y="300" font-family="-apple-system, system-ui, sans-serif" font-size="120" text-anchor="middle" fill="#ffffff">🧣</text>
+  <text x="400" y="450" font-family="-apple-system, system-ui, sans-serif" font-weight="bold" font-size="36" text-anchor="middle" fill="#ffffff">Kış Kampanyası Sonuçları</text>
+</svg>
