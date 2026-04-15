@@ -8,10 +8,30 @@ export default function Home() {
       {/* Hero Slider */}
       <HeroSlider />
 
+      {/* Impact Stats Bar */}
+      <div className="bg-white shadow-md py-0">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
+            {[
+              { icon: 'fa-people-group', val: '12.500+', label: 'Desteklenen Kişi', color: 'text-[#0d3b6e]' },
+              { icon: 'fa-folder-open', val: '48', label: 'Tamamlanan Proje', color: 'text-[#e67e22]' },
+              { icon: 'fa-earth-europe', val: '18', label: 'Ülke', color: 'text-[#0d3b6e]' },
+              { icon: 'fa-hand-holding-heart', val: '₺8.4M+', label: 'Toplam Bağış', color: 'text-[#059669]' },
+            ].map((s, i) => (
+              <div key={i} className="text-center py-6 px-4">
+                <i className={`fas ${s.icon} text-2xl ${s.color} mb-2`}></i>
+                <p className={`text-2xl md:text-3xl font-black ${s.color}`}>{s.val}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Main Campaign Banner */}
-      <section className="w-full mt-10 md:mt-16 mb-8">
+      <section className="w-full mt-10 md:mt-14 mb-0">
         <Link href="/kampanya" className="block w-full">
-          <Image 
+          <Image
             src="/images/banner1.png"
             alt="4 İklim İnsani Yardım Kampanyası"
             width={1920}
@@ -22,88 +42,112 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Quick Links */}
+      {/* Quick Action Cards */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-3">Ne Yapmak İstiyorsunuz?</h2>
-            <div className="w-16 h-1 bg-[#e67e22] mx-auto rounded mb-4"></div>
-            <p className="text-gray-600">Size en yakın yolu seçin, birlikte iyilik yapalım.</p>
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Harekete Geç</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-4">Ne Yapmak İstiyorsunuz?</h2>
+            <div className="w-16 h-1 bg-[#e67e22] mx-auto rounded"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow">
-              <i className="fa-solid fa-hand-holding-heart text-5xl text-[#e67e22] mb-4"></i>
-              <h3 className="text-xl font-bold text-[#0d3b6e] mb-3">Bağış Yapın</h3>
-              <p className="text-gray-600 mb-4">Her miktar fark yaratır. Bağışınız doğrudan ihtiyaç sahiplerine ulaştırılmaktadır.</p>
-              <Link href="/bagis" className="text-[#e67e22] font-semibold hover:text-[#ca6f1e] inline-flex items-center gap-2">
-                Bağış için tıklayın <i className="fas fa-arrow-right"></i>
-              </Link>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow">
-              <i className="fa-solid fa-users text-5xl text-[#059669] mb-4"></i>
-              <h3 className="text-xl font-bold text-[#0d3b6e] mb-3">Gönüllü Olun</h3>
-              <p className="text-gray-600 mb-4">Zamanınızı ve enerjinizi paylaşarak toplumsal değişime katkı sağlayın.</p>
-              <Link href="/gonullu" className="text-[#059669] font-semibold hover:text-[#047857] inline-flex items-center gap-2">
-                Başvurmak için tıklayın <i className="fas fa-arrow-right"></i>
-              </Link>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow">
-              <i className="fa-solid fa-clipboard-list text-5xl text-[#0d3b6e] mb-4"></i>
-              <h3 className="text-xl font-bold text-[#0d3b6e] mb-3">Projelerimizi İnceleyin</h3>
-              <p className="text-gray-600 mb-4">Yürüttüğümüz insani yardım ve toplumsal kalkınma projelerimizi keşfedin.</p>
-              <Link href="/projeler" className="text-[#e67e22] font-semibold hover:text-[#ca6f1e] inline-flex items-center gap-2">
-                Projeleri görüntüleyin <i className="fas fa-arrow-right"></i>
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              {
+                icon: 'fa-hand-holding-heart',
+                color: 'text-[#e67e22]',
+                bg: 'bg-[#e67e22]/10',
+                border: 'border-t-[#e67e22]',
+                title: 'Bağış Yapın',
+                desc: 'Her miktar fark yaratır. Bağışınız şeffaflık ilkesiyle doğrudan ihtiyaç sahiplerine ulaştırılır.',
+                link: '/bagis',
+                cta: 'Bağış Yap',
+                ctaClass: 'bg-[#e67e22] hover:bg-[#ca6f1e] text-white',
+              },
+              {
+                icon: 'fa-users',
+                color: 'text-[#059669]',
+                bg: 'bg-[#059669]/10',
+                border: 'border-t-[#059669]',
+                title: 'Gönüllü Olun',
+                desc: 'Zamanınızı ve enerjinizi paylaşarak uzak coğrafyalardaki kardeşlerinize umut olun.',
+                link: '/gonullu',
+                cta: 'Başvuru Formu',
+                ctaClass: 'bg-[#059669] hover:bg-[#047857] text-white',
+              },
+              {
+                icon: 'fa-clipboard-list',
+                color: 'text-[#0d3b6e]',
+                bg: 'bg-[#0d3b6e]/10',
+                border: 'border-t-[#0d3b6e]',
+                title: 'Projelerimiz',
+                desc: 'Yürüttüğümüz insani yardım ve toplumsal kalkınma projelerini detaylıca inceleyin.',
+                link: '/projeler',
+                cta: 'Projeleri İncele',
+                ctaClass: 'bg-[#0d3b6e] hover:bg-[#2471a3] text-white',
+              },
+            ].map((card, i) => (
+              <div key={i} className={`bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border-t-4 ${card.border}`}>
+                <div className="p-8">
+                  <div className={`w-14 h-14 ${card.bg} rounded-2xl flex items-center justify-center mb-5`}>
+                    <i className={`fas ${card.icon} text-2xl ${card.color}`}></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0d3b6e] mb-3">{card.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6">{card.desc}</p>
+                  <Link href={card.link} className={`inline-flex items-center gap-2 ${card.ctaClass} px-6 py-2.5 rounded-full font-semibold text-sm transition-colors`}>
+                    {card.cta} <i className="fas fa-arrow-right text-xs"></i>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-lg">
-              <Image 
-                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80"
-                alt="Topluluk ve Dayanışma"
-                fill
-                className="object-cover"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div className="relative">
+              <div className="relative h-[460px] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80"
+                  alt="Topluluk ve Dayanışma"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Floating stat card */}
+              <div className="absolute -bottom-6 -right-6 bg-[#0d3b6e] text-white rounded-2xl p-5 shadow-xl hidden md:block">
+                <p className="text-3xl font-black text-[#e67e22]">15+</p>
+                <p className="text-xs text-white/70">Yıllık Deneyim</p>
+              </div>
             </div>
 
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-3">Biz Kimiz?</h2>
-              <div className="w-16 h-1 bg-[#e67e22] rounded mb-6"></div>
-              <p className="text-gray-600 mb-5 text-lg">
-                2010 yılında kurulan 4 İklim İnsani Yardım Derneği, Türkiye'nin tüm coğrafi bölgelerinde ve yurt dışında ihtiyaç sahiplerine ulaşarak insani değerleri yaşatmayı amaçlamaktadır.
+              <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Biz Kimiz?</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-2 leading-tight">İnsani Değerleri<br />Yaşatan Köprü</h2>
+              <div className="w-16 h-1 bg-[#e67e22] rounded mb-7"></div>
+              <p className="text-gray-600 mb-6 text-[15px] leading-relaxed">
+                2010 yılında kurulan 4 İklim İnsani Yardım Derneği, Türkiye&apos;nin ve dünyanın dört bir yanındaki ihtiyaç sahiplerine ulaşarak kalıcı değişimler yaratmaktadır.
               </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle text-[#e67e22] text-xl mt-0.5"></i>
-                  <span className="text-gray-700">Şeffaflık ve hesap verebilirlik ilkesiyle faaliyet gösteriyoruz.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle text-[#e67e22] text-xl mt-0.5"></i>
-                  <span className="text-gray-700">Yardımlarımızı ayrım gözetmeksizin tüm ihtiyaç sahiplerine ulaştırıyoruz.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle text-[#e67e22] text-xl mt-0.5"></i>
-                  <span className="text-gray-700">Gönüllü ve bağışçılarımızla güçlü bir dayanışma ağı oluşturuyoruz.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <i className="fas fa-check-circle text-[#e67e22] text-xl mt-0.5"></i>
-                  <span className="text-gray-700">Kısa vadeli yardım ve uzun vadeli kalkınma projelerini bir arada yürütüyoruz.</span>
-                </li>
+              <ul className="space-y-4 mb-8">
+                {[
+                  'Åeffaflık ve hesap verebilirlik ilkesiyle faaliyet gösteriyoruz.',
+                  'Yardımlarımızı ayrım gözetmeksizin tüm ihtiyaç sahiplerine ulaştırıyoruz.',
+                  'Kısa vadeli yardım ve uzun vadeli kalkınma projelerini bir arada yürütüyoruz.',
+                  'Bağışlarınızın %94\'ü doğrudan saha projelerine aktarılmaktadır.',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                    <span className="w-5 h-5 rounded-full bg-[#e67e22]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <i className="fas fa-check text-[#e67e22] text-[10px]"></i>
+                    </span>
+                    {item}
+                  </li>
+                ))}
               </ul>
-              <Link 
-                href="/hakkimizda"
-                className="inline-block px-8 py-3 bg-[#0d3b6e] text-white font-semibold rounded-lg hover:bg-[#1a5276] transition-colors"
-              >
-                Daha Fazla Bilgi
+              <Link href="/hakkimizda" className="inline-flex items-center gap-2 bg-[#0d3b6e] hover:bg-[#2471a3] text-white font-semibold px-7 py-3 rounded-full transition-colors">
+                Daha Fazla Bilgi <i className="fas fa-arrow-right text-xs"></i>
               </Link>
             </div>
           </div>
@@ -113,151 +157,154 @@ export default function Home() {
       {/* Recent Projects */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-3">Son Projelerimiz</h2>
-            <div className="w-16 h-1 bg-[#e67e22] mx-auto rounded mb-4"></div>
-            <p className="text-gray-600">Sahada yürüttüğümüz güncel insani yardım ve kalkınma çalışmaları.</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+            <div>
+              <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Saha Çalışmaları</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-1">Son Projelerimiz</h2>
+              <div className="w-16 h-1 bg-[#e67e22] rounded"></div>
+            </div>
+            <Link href="/projeler" className="inline-flex items-center gap-2 text-[#0d3b6e] font-semibold text-sm border-2 border-[#0d3b6e] px-5 py-2 rounded-full hover:bg-[#0d3b6e] hover:text-white transition-all self-start md:self-auto">
+              Tüm Projeler <i className="fas fa-arrow-right text-xs"></i>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
-                badge: 'Barınma',
+                badge: 'Barınma', badgeColor: 'bg-blue-600',
                 title: 'Depremzede Ailelere Konteyner Ev Projesi',
-                description: 'Doğal afet mağdurları için geçici barınma imkânı sağlayan konteyner ev kampanyamız devam etmektedir.'
+                desc: 'Doğal afet mağdurları için geçici barınma imkânı sağlayan konteyner ev kampanyamız devam etmektedir.',
+                status: 'Devam Ediyor',
               },
               {
                 image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80',
-                badge: 'Eğitim',
+                badge: 'Eğitim', badgeColor: 'bg-[#e67e22]',
                 title: 'Kırtasiye ve Eğitim Seti Dağıtımı',
-                description: 'Her yıl düzenlenen okul başı kampanyamızda binlerce öğrenciye kırtasiye ve okul çantası ulaştırıyoruz.'
+                desc: 'Her yıl düzenlenen okul başı kampanyamızda binlerce öğrenciye kırtasiye ve okul çantası ulaştırıyoruz.',
+                status: 'Tamamlandı',
               },
               {
                 image: 'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=600&q=80',
-                badge: 'Gıda',
+                badge: 'Gıda', badgeColor: 'bg-[#059669]',
                 title: 'Ramazan Gıda Paketi Dağıtımı',
-                description: 'Ramazan ayı boyunca ihtiyaç sahibi ailelere temel gıda paketleri ve iftar yemekleri ulaştırıyoruz.'
-              }
+                desc: 'Ramazan ayı boyunca ihtiyaç sahibi ailelere temel gıda paketleri ve iftar yemekleri ulaştırıyoruz.',
+                status: 'Devam Ediyor',
+              },
             ].map((project, i) => (
-              <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                <div className="relative h-48">
-                  <Image 
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                <div className="relative h-52 overflow-hidden">
+                  <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    <span className={`px-3 py-1 ${project.badgeColor} text-white text-xs font-bold rounded-full`}>{project.badge}</span>
+                    <span className={`px-3 py-1 text-xs font-bold rounded-full ${project.status === 'Devam Ediyor' ? 'bg-white text-[#059669] border border-[#059669]' : 'bg-white text-gray-600 border border-gray-300'}`}>{project.status}</span>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-[#2471a3] text-white text-xs font-semibold rounded-full mb-3">
-                    {project.badge}
-                  </span>
-                  <h3 className="text-lg font-bold text-[#0d3b6e] mb-2">{project.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                  <Link href="/projeler" className="text-[#e67e22] font-semibold text-sm hover:text-[#ca6f1e] inline-flex items-center gap-2">
-                    Detayları gör <i className="fas fa-arrow-right"></i>
+                  <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{project.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{project.desc}</p>
+                  <Link href="/projeler" className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm hover:text-[#ca6f1e]">
+                    Detayları gör <i className="fas fa-arrow-right text-xs"></i>
                   </Link>
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <Link 
-              href="/projeler"
-              className="inline-block px-8 py-3 bg-[#0d3b6e] text-white font-semibold rounded-lg hover:bg-[#1a5276] transition-colors"
-            >
-              Tüm Projeleri Gör
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#0d3b6e] to-[#2471a3] text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Bir Bağışınız Bir Hayat Değiştirebilir</h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Bağışlarınız şeffaflık ilkesi çerçevesinde, tamamen ihtiyaç sahiplerine aktarılmaktadır. Siz de bu güzel yolculuğun bir parçası olun.
+      <section className="py-24 bg-gradient-to-r from-[#0d3b6e] to-[#2471a3] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
+        </div>
+        <div className="container mx-auto px-4 text-center relative">
+          <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-4">Harekete Geç</p>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">
+            Bir Bağışınız<br className="hidden md:block" /> Bir Hayat Değiştirebilir
+          </h2>
+          <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Bağışlarınızın %94&apos;ü şeffaflık ilkesi çerçevesinde tamamen ihtiyaç sahiplerine aktarılmaktadır.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link 
-              href="/bagis"
-              className="inline-block px-8 py-3 bg-[#e67e22] text-white font-semibold rounded-lg hover:bg-[#ca6f1e] transition-colors"
-            >
-              Bağış Bilgilerini Gör
+            <Link href="/bagis" className="inline-flex items-center gap-2 bg-[#e67e22] hover:bg-[#ca6f1e] text-white font-bold px-9 py-4 rounded-full text-base transition-colors shadow-xl shadow-[#e67e22]/20">
+              <i className="fas fa-hand-holding-heart"></i> Hemen Bağış Yap
             </Link>
-            <Link 
-              href="/gonullu"
-              className="inline-block px-8 py-3 bg-[#059669] hover:bg-[#047857] text-white font-semibold rounded-lg shadow-lg transition-colors border border-transparent"
-            >
-              Gönüllü Ol
+            <Link href="/gonullu" className="inline-flex items-center gap-2 bg-[#059669] hover:bg-[#047857] text-white font-bold px-9 py-4 rounded-full text-base transition-colors shadow-xl shadow-[#059669]/20">
+              <i className="fas fa-users"></i> Gönüllü Ol
             </Link>
           </div>
         </div>
       </section>
 
       {/* Recent News */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-3">Son Haberler</h2>
-            <div className="w-16 h-1 bg-[#e67e22] mx-auto rounded mb-4"></div>
-            <p className="text-gray-600">Faaliyetlerimizden ve derneğimizden haberdar olun.</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+            <div>
+              <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Güncel</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-1">Son Haberler</h2>
+              <div className="w-16 h-1 bg-[#e67e22] rounded"></div>
+            </div>
+            <Link href="/haberler" className="inline-flex items-center gap-2 text-[#0d3b6e] font-semibold text-sm border-2 border-[#0d3b6e] px-5 py-2 rounded-full hover:bg-[#0d3b6e] hover:text-white transition-all self-start md:self-auto">
+              Tüm Haberler <i className="fas fa-arrow-right text-xs"></i>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 image: 'https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&w=600&q=80',
+                cat: 'Kampanya', catColor: 'bg-[#e67e22]',
                 date: '10 Nisan 2026',
                 title: 'Kış Yardım Kampanyamız Tamamlandı',
-                description: '2025-2026 kış sezonu boyunca yürüttüğümüz kampanyada 3.200 aileye ulaştık.'
+                desc: '2025-2026 kış sezonu boyunca yürüttüğümüz kampanyada 3.200 aileye ulaştık.',
               },
               {
                 image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80',
+                cat: 'Eğitim', catColor: 'bg-blue-600',
                 date: '2 Mart 2026',
                 title: 'Yeni Gönüllü Eğitim Programı Başladı',
-                description: 'Gönüllülerimize yönelik düzenlediğimiz eğitim programına 85 kişi katıldı.'
+                desc: 'Gönüllülerimize yönelik düzenlediğimiz eğitim programına 85 kişi katıldı.',
               },
               {
                 image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80',
-                date: '14 Şubat 2026',
+                cat: 'Duyuru', catColor: 'bg-[#0d3b6e]',
+                date: '14 Åubat 2026',
                 title: 'Uluslararası Yardım İşbirliği Protokolü İmzalandı',
-                description: 'Yurt dışı yardım faaliyetleri kapsamında yeni bir işbirliği anlaşması imzaladık.'
-              }
+                desc: 'Yurt dışı yardım faaliyetleri kapsamında yeni bir işbirliği anlaşması imzaladık.',
+              },
             ].map((news, i) => (
-              <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                <div className="relative h-48">
-                  <Image 
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
+                <div className="relative h-52 overflow-hidden">
+                  <Image
                     src={news.image}
                     alt={news.title}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute top-4 left-4">
+                    <span className={`px-3 py-1 ${news.catColor} text-white text-xs font-bold rounded-full`}>{news.cat}</span>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">
-                    <i className="far fa-calendar mr-2"></i>{news.date}
+                  <p className="text-xs text-gray-400 mb-3 flex items-center gap-2">
+                    <i className="far fa-calendar text-[#e67e22]"></i> {news.date}
                   </p>
-                  <h3 className="text-lg font-bold text-[#0d3b6e] mb-2">{news.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{news.description}</p>
-                  <Link href="/haberler" className="text-[#e67e22] font-semibold text-sm hover:text-[#ca6f1e] inline-flex items-center gap-2">
-                    Devamını oku <i className="fas fa-arrow-right"></i>
+                  <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{news.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{news.desc}</p>
+                  <Link href="/haberler" className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm hover:text-[#ca6f1e]">
+                    Devamını Oku <i className="fas fa-arrow-right text-xs"></i>
                   </Link>
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link 
-              href="/haberler"
-              className="inline-block px-8 py-3 bg-[#0d3b6e] text-white font-semibold rounded-lg hover:bg-[#1a5276] transition-colors"
-            >
-              Tüm Haberleri Gör
-            </Link>
           </div>
         </div>
       </section>

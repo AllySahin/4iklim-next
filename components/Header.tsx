@@ -4,101 +4,138 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
+const navLinks = [
+  { href: '/', label: 'Ana Sayfa' },
+  { href: '/hakkimizda', label: 'Hakkımızda' },
+  { href: '/projeler', label: 'Projelerimiz' },
+  { href: '/haberler', label: 'Haberler' },
+  { href: '/galeri', label: 'Galeri' },
+  { href: '/gonullu', label: 'Gönüllü Ol' },
+  { href: '/iletisim', label: 'İletişim' },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
       {/* Topbar */}
-      <div className="bg-[#0d3b6e] text-white/85 text-xs py-1.5">
+      <div className="bg-[#0a2d55] text-white/80 text-xs py-2 border-b border-white/10">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center flex-wrap gap-1.5">
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5">
-                <i className="fas fa-phone"></i> +90 (212) 000 00 00
-              </span>
-              <span className="flex items-center gap-1.5">
-                <i className="fas fa-envelope"></i> info@4iklim.org.tr
+          <div className="flex justify-between items-center flex-wrap gap-2">
+            <div className="flex items-center divide-x divide-white/20">
+              <a href="tel:+902120000000" className="flex items-center gap-1.5 pr-4 hover:text-white transition-colors">
+                <i className="fas fa-phone-alt text-[#e67e22]"></i> +90 (212) 000 00 00
+              </a>
+              <a href="mailto:info@4iklim.org.tr" className="flex items-center gap-1.5 px-4 hover:text-white transition-colors">
+                <i className="fas fa-envelope text-[#e67e22]"></i> info@4iklim.org.tr
+              </a>
+              <span className="flex items-center gap-1.5 pl-4 text-white/50">
+                <i className="fas fa-clock text-[#e67e22]"></i> Pzt–Cum 09:00–18:00
               </span>
             </div>
-            <div className="flex items-center gap-4">
-              <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter" className="hover:text-white transition-colors">
-                <i className="fab fa-x-twitter"></i>
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" className="hover:text-white transition-colors">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" className="hover:text-white transition-colors">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" className="hover:text-white transition-colors">
-                <i className="fab fa-youtube"></i>
-              </a>
+            <div className="flex items-center gap-3">
+              <span className="text-white/40 text-[10px] uppercase tracking-widest mr-1">Takip Et</span>
+              {[
+                { href: 'https://twitter.com', icon: 'fa-x-twitter', label: 'Twitter' },
+                { href: 'https://instagram.com', icon: 'fa-instagram', label: 'Instagram' },
+                { href: 'https://facebook.com', icon: 'fa-facebook-f', label: 'Facebook' },
+                { href: 'https://youtube.com', icon: 'fa-youtube', label: 'YouTube' },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  className="w-6 h-6 rounded bg-white/10 flex items-center justify-center hover:bg-[#e67e22] transition-colors">
+                  <i className={`fab ${s.icon} text-[11px]`}></i>
+                </a>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
+      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div className="container mx-auto px-4">
-          <nav className="flex items-center justify-between py-3.5">
+          <nav className="flex items-center justify-between py-3">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3">
-              <Image 
-                src="/logo.png" 
-                alt="4 İklim İnsani Yardım Derneği" 
+            <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="4 İklim İnsani Yardım Derneği"
                 width={240}
                 height={56}
-                className="h-14 w-auto object-contain"
+                className="h-12 w-auto object-contain"
                 priority
               />
             </Link>
 
             {/* Desktop Menu */}
-            <ul className="hidden lg:flex items-center gap-1">
-              <li><Link href="/" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">Ana Sayfa</Link></li>
-              <li><Link href="/hakkimizda" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">Hakkımızda</Link></li>
-              <li><Link href="/projeler" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">Projelerimiz</Link></li>
-              <li><Link href="/haberler" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">Haberler</Link></li>
-              <li><Link href="/galeri" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">Galeri</Link></li>
-              <li><Link href="/gonullu" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">Gönüllü Ol</Link></li>
-              <li><Link href="/iletisim" className="px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100 hover:text-[#0d3b6e] transition-colors">İletişim</Link></li>
-              <li>
-                <Link href="/bagis" className="bg-[#e67e22] text-white px-4.5 py-2 rounded-lg font-semibold text-sm hover:bg-[#ca6f1e] transition-colors">
-                  Bağış Yap
-                </Link>
-              </li>
+            <ul className="hidden lg:flex items-center gap-0.5">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="relative px-3.5 py-2 font-medium text-[13px] text-gray-600 hover:text-[#0d3b6e] transition-colors group"
+                  >
+                    {link.label}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-[#e67e22] rounded-full group-hover:w-4/5 transition-all duration-300"></span>
+                  </Link>
+                </li>
+              ))}
             </ul>
 
+            {/* Desktop CTAs */}
+            <div className="hidden lg:flex items-center gap-3">
+              <Link
+                href="/gonullu"
+                className="text-[13px] font-semibold text-[#059669] border border-[#059669] px-4 py-2 rounded-full hover:bg-[#059669] hover:text-white transition-all duration-200"
+              >
+                <i className="fas fa-users mr-1.5"></i>Gönüllü Ol
+              </Link>
+              <Link
+                href="/bagis"
+                className="text-[13px] font-bold bg-[#e67e22] text-white px-5 py-2 rounded-full hover:bg-[#ca6f1e] transition-colors shadow-sm shadow-[#e67e22]/30"
+              >
+                <i className="fas fa-hand-holding-heart mr-1.5"></i>Bağış Yap
+              </Link>
+            </div>
+
             {/* Mobile Menu Button */}
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden flex flex-col gap-1.5 p-2"
               aria-label="Menu"
             >
-              <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-              <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-              <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-all ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
             </button>
           </nav>
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <ul className="lg:hidden pb-4 space-y-2">
-              <li><Link href="/" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>Ana Sayfa</Link></li>
-              <li><Link href="/hakkimizda" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>Hakkımızda</Link></li>
-              <li><Link href="/projeler" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>Projelerimiz</Link></li>
-              <li><Link href="/haberler" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>Haberler</Link></li>
-              <li><Link href="/galeri" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>Galeri</Link></li>
-              <li><Link href="/gonullu" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>Gönüllü Ol</Link></li>
-              <li><Link href="/iletisim" className="block px-3.5 py-2 rounded-lg font-medium text-sm text-gray-800 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>İletişim</Link></li>
-              <li>
-                <Link href="/bagis" className="block bg-[#e67e22] text-white px-3.5 py-2 rounded-lg font-semibold text-sm text-center hover:bg-[#ca6f1e]" onClick={() => setIsMenuOpen(false)}>
+            <div className="lg:hidden border-t border-gray-100 py-4">
+              <ul className="space-y-1 mb-4">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="block px-4 py-2.5 rounded-xl font-medium text-sm text-gray-700 hover:bg-gray-50 hover:text-[#0d3b6e] transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-3 px-4">
+                <Link href="/gonullu" className="flex-1 py-2.5 text-center text-sm font-semibold text-[#059669] border border-[#059669] rounded-full hover:bg-[#059669] hover:text-white transition-all" onClick={() => setIsMenuOpen(false)}>
+                  Gönüllü Ol
+                </Link>
+                <Link href="/bagis" className="flex-1 py-2.5 text-center text-sm font-bold bg-[#e67e22] text-white rounded-full hover:bg-[#ca6f1e] transition-colors" onClick={() => setIsMenuOpen(false)}>
                   Bağış Yap
                 </Link>
-              </li>
-            </ul>
+              </div>
+            </div>
           )}
         </div>
       </header>
