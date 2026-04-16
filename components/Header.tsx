@@ -8,7 +8,6 @@ const navLinks = [
   { href: '/', label: 'Ana Sayfa' },
   { href: '/hakkimizda', label: 'Hakkımızda' },
   { href: '/projeler', label: 'Projelerimiz' },
-  { href: '/haberler', label: 'Haberler' },
   { href: '/galeri', label: 'Galeri' },
   { href: '/iletisim', label: 'İletişim' },
 ];
@@ -17,45 +16,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <>
-      {/* Topbar */}
-      <div className="bg-[#0a2d55] text-white/80 text-xs py-2 border-b border-white/10">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center flex-wrap gap-2">
-            <div className="flex items-center divide-x divide-white/20">
-              <a href="tel:+902120000000" className="flex items-center gap-1.5 pr-4 hover:text-white transition-colors">
-                <i className="fas fa-phone-alt text-[#e67e22]"></i> +90 (212) 000 00 00
-              </a>
-              <a href="mailto:info@4iklim.org.tr" className="flex items-center gap-1.5 px-4 hover:text-white transition-colors">
-                <i className="fas fa-envelope text-[#e67e22]"></i> info@4iklim.org.tr
-              </a>
-              <span className="flex items-center gap-1.5 pl-4 text-white/50">
-                <i className="fas fa-clock text-[#e67e22]"></i> Pzt–Cum 09:00–18:00
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-white/40 text-[10px] uppercase tracking-widest mr-1">Takip Et</span>
-              {[
-                { href: 'https://twitter.com', icon: 'fa-x-twitter', label: 'Twitter' },
-                { href: 'https://instagram.com', icon: 'fa-instagram', label: 'Instagram' },
-                { href: 'https://facebook.com', icon: 'fa-facebook-f', label: 'Facebook' },
-                { href: 'https://youtube.com', icon: 'fa-youtube', label: 'YouTube' },
-              ].map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                  className="w-6 h-6 rounded bg-white/10 flex items-center justify-center hover:bg-[#e67e22] transition-colors">
-                  <i className={`fab ${s.icon} text-[11px]`}></i>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between py-3">
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-3 flex-shrink-0">
               <Image
                 src="/logo.png"
@@ -66,8 +29,6 @@ export default function Header() {
                 priority
               />
             </Link>
-
-            {/* Desktop Menu */}
             <ul className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -81,8 +42,6 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-
-            {/* Desktop CTAs */}
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/gonullu"
@@ -97,8 +56,6 @@ export default function Header() {
                 <i className="fas fa-hand-holding-heart mr-1.5"></i>Bağış Yap
               </Link>
             </div>
-
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden flex flex-col gap-1.5 p-2"
@@ -109,8 +66,6 @@ export default function Header() {
               <span className={`block w-6 h-0.5 bg-[#0d3b6e] rounded transition-all ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
             </button>
           </nav>
-
-          {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="lg:hidden border-t border-gray-100 py-4">
               <ul className="space-y-1 mb-4">
@@ -138,6 +93,5 @@ export default function Header() {
           )}
         </div>
       </header>
-    </>
   );
 }

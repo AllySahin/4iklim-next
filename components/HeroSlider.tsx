@@ -56,15 +56,12 @@ export default function HeroSlider() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="relative h-[500px] md:h-[600px] lg:h-[650px]">
-              {/* Background Image with Overlay */}
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${slide.image})` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
               </div>
-
-              {/* Content */}
               <div className="relative h-full container mx-auto px-4">
                 <div className="flex items-center h-full">
                   <div className="max-w-2xl text-white">
@@ -102,8 +99,6 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Stats Bar */}
       <div className="bg-white shadow-lg -mt-16 relative z-10 mx-4 md:mx-8 lg:mx-auto lg:max-w-6xl rounded-xl overflow-hidden">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200">
           <div className="p-6 text-center">

@@ -22,7 +22,6 @@ export default function Kampanya() {
 
   return (
     <div className="min-h-screen">
-      {/* Campaign Banner */}
       <div className="w-full">
         <Image
           src="/images/banner1.png"
@@ -32,8 +31,6 @@ export default function Kampanya() {
           className="w-full h-auto"
         />
       </div>
-
-      {/* Campaign Title + Progress */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="flex flex-wrap gap-3 mb-5">
@@ -47,8 +44,6 @@ export default function Kampanya() {
             <span><i className="far fa-calendar text-[#e67e22] mr-1"></i> 10 Şubat – 30 Nisan 2026</span>
             <span><i className="fas fa-map-marker-alt text-[#e67e22] mr-1"></i> Türkiye, Suriye, Sudan, Somali</span>
           </p>
-
-          {/* Progress Bar */}
           <div className="bg-gray-50 rounded-2xl p-6 mb-10">
             <div className="flex justify-between items-end mb-3">
               <div>
@@ -85,8 +80,6 @@ export default function Kampanya() {
               </div>
             </div>
           </div>
-
-          {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
             <Link href="/bagis" className="flex-1 min-w-[180px] py-4 bg-[#e67e22] hover:bg-[#ca6f1e] text-white font-bold rounded-xl text-center text-lg transition-colors shadow-lg shadow-[#e67e22]/20 flex items-center justify-center gap-2">
               <i className="fas fa-hand-holding-heart"></i> Hemen Bağış Yap
@@ -100,12 +93,9 @@ export default function Kampanya() {
           </div>
         </div>
       </section>
-
-      {/* Story + Updates */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Story */}
             <div className="lg:col-span-2">
               <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-4">Kampanya Hikayesi</p>
               <h2 className="text-2xl font-bold text-[#0d3b6e] mb-6">"Yorulmaya Değer" Diyerek Çıktık Bu Yola</h2>
@@ -131,8 +121,6 @@ export default function Kampanya() {
                 </p>
               </div>
             </div>
-
-            {/* Updates Sidebar */}
             <div>
               <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-4">Saha Güncellemeleri</p>
               <div className="space-y-4">
@@ -150,8 +138,6 @@ export default function Kampanya() {
           </div>
         </div>
       </section>
-
-      {/* FAQ */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-10">
@@ -172,8 +158,6 @@ export default function Kampanya() {
           </div>
         </div>
       </section>
-
-      {/* Final CTA */}
       <section className="py-16 bg-gradient-to-r from-[#059669] to-[#047857]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-3">Sessiz Kalma, Harekete Geç!</h2>

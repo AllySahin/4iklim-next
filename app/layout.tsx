@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Script from "next/script";
+import { headers } from "next/headers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,11 +15,15 @@ export const metadata: Metadata = {
   description: "Türkiye'nin dört bir yanında insani yardım, sosyal dayanışma ve toplumsal kalkınma projeleri.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-next-pathname") || headersList.get("x-invoke-path") || "";
+  const isAdmin = pathname.startsWith("/admin");
+
   return (
     <html lang="tr" className={inter.className}>
       <head>
@@ -32,9 +36,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Header />
+        {!isAdmin && <Header />}
         <main className="flex-1">{children}</main>
-        <Footer />
+        {!isAdmin && <Footer />}
       </body>
     </html>
   );

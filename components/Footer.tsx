@@ -4,8 +4,6 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="bg-[#0a2d55] text-white">
-
-      {/* Newsletter Bar */}
       <div className="border-b border-white/10 bg-[#0d3b6e]">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -26,12 +24,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Main Footer Grid */}
       <div className="container mx-auto px-4 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-
-          {/* Brand — 2 cols */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-5">
               <Image
@@ -45,7 +39,6 @@ export default function Footer() {
             <p className="text-sm text-white/65 leading-relaxed mb-5 max-w-xs">
               Türkiye&apos;nin ve dünyanın dört bir yanında ihtiyaç sahiplerine yardım eli uzatan, şeffaf ve güvenilir bir sivil toplum kuruluşuyuz.
             </p>
-            {/* Badges */}
             <div className="flex flex-wrap gap-2 mb-6">
               {[
                 { icon: 'fa-award', text: 'Kamu Yararına Dernek' },
@@ -57,7 +50,6 @@ export default function Footer() {
                 </span>
               ))}
             </div>
-            {/* Socials */}
             <div className="flex gap-2">
               {[
                 { href: '#', icon: 'fa-x-twitter', label: 'Twitter' },
@@ -73,8 +65,6 @@ export default function Footer() {
               ))}
             </div>
           </div>
-
-          {/* Quick Links */}
           <div>
             <h4 className="font-bold text-sm uppercase tracking-widest text-white/40 mb-5">Menü</h4>
             <ul className="space-y-2.5 text-sm">
@@ -82,7 +72,6 @@ export default function Footer() {
                 ['/', 'Ana Sayfa'],
                 ['/hakkimizda', 'Hakkımızda'],
                 ['/projeler', 'Projelerimiz'],
-                ['/haberler', 'Haberler'],
                 ['/galeri', 'Galeri'],
               ].map(([href, label]) => (
                 <li key={href}>
@@ -93,8 +82,6 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Participation */}
           <div>
             <h4 className="font-bold text-sm uppercase tracking-widest text-white/40 mb-5">Katılım</h4>
             <ul className="space-y-2.5 text-sm">
@@ -117,8 +104,6 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-
-          {/* Contact */}
           <div>
             <h4 className="font-bold text-sm uppercase tracking-widest text-white/40 mb-5">İletişim</h4>
             <ul className="space-y-3 text-sm text-white/65">
@@ -142,8 +127,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-[12px] text-white/40">

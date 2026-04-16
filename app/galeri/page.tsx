@@ -53,7 +53,6 @@ const photos = [
 export default function Galeri() {
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
       <div className="relative h-[300px] md:h-[380px]">
         <Image
           src="/images/galeri-hero.jpg"
@@ -77,10 +76,8 @@ export default function Galeri() {
         </div>
       </div>
 
-      {/* Gallery */
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            {/* Category Filter */}
             <div className="flex flex-wrap gap-3 justify-center mb-12">
               {categories.map((cat, i) => (
                 <button
@@ -91,8 +88,6 @@ export default function Galeri() {
                 </button>
               ))}
             </div>
-
-            {/* Photo Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]">
               {photos.map((p, i) => (
                 <div
@@ -127,7 +122,6 @@ export default function Galeri() {
           </div>
         </section>
 
-      }
       <section className="py-16 bg-gradient-to-r from-[#0d3b6e] to-[#2471a3]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-3">Siz de Bu Anların Parçası Olun</h2>

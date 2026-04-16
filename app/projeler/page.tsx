@@ -15,88 +15,15 @@ export const projects = [
     reached: '347 aile',
     percent: 69,
     desc: 'Depremin yıkıcı etkisiyle evsiz kalan ailelere, onurlu ve güvenli bir barınma imkânı sunmak amacıyla hayata geçirilen konteyner kent projemiz devam etmektedir.'
-  },
-  {
-    id: 2,
-    slug: 'okul-cantasi-kirtasiye',
-    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80',
-    category: 'Eğitim',
-    categoryColor: 'bg-orange-500',
-    title: 'Okul Çantası ve Kırtasiye Seti Dağıtımı',
-    status: 'Devam Ediyor',
-    location: 'Tüm Türkiye',
-    target: '10.000 öğrenci',
-    reached: '7.820 öğrenci',
-    percent: 78,
-    desc: 'Her yıl Eylül ayı öncesinde başlayan kampanyamızda, maddi imkânsızlıklar nedeniyle okul malzemelerine erişemeyen öğrencilere eksiksiz kırtasiye seti ulaştırıyoruz.'
-  },
-  {
-    id: 3,
-    slug: 'ramazan-gida-paketi',
-    image: 'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=800&q=80',
-    category: 'Gıda',
-    categoryColor: 'bg-green-600',
-    title: 'Ramazan Gıda Paketi Dağıtımı',
-    status: 'Tamamlandı',
-    location: 'Yurt İçi & Yurt Dışı',
-    target: '5.000 aile',
-    reached: '5.000 aile',
-    percent: 100,
-    desc: 'Ramazan ayının bereketini paylaşmak için yurt içinde ve yurt dışındaki ihtiyaç sahibi ailelere ulaştırdığımız gıda paketi kampanyamızı başarıyla tamamladık.'
-  },
-  {
-    id: 4,
-    slug: 'afrika-su-kuyusu',
-    image: 'https://images.unsplash.com/photo-1534067783941-51c9c23ceabc?auto=format&fit=crop&w=800&q=80',
-    category: 'Su & Sağlık',
-    categoryColor: 'bg-sky-600',
-    title: 'Afrika\'da Su Kuyusu Projesi',
-    status: 'Devam Ediyor',
-    location: 'Nijer, Chad, Somali',
-    target: '50 kuyu',
-    reached: '38 kuyu',
-    percent: 76,
-    desc: 'Temiz içme suyuna erişimin olmadığı kurak Afrika bölgelerinde, bağışçılarımızın destekleriyle hayat pınarları açmaya devam ediyoruz.'
-  },
-  {
-    id: 5,
-    slug: 'kis-cadiri-isinma',
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80',
-    category: 'Barınma',
-    categoryColor: 'bg-blue-600',
-    title: 'Kış Çadırı ve Isınma Yardımı',
-    status: 'Tamamlandı',
-    location: 'Suriye, Afganistan',
-    target: '2.000 aile',
-    reached: '2.000 aile',
-    percent: 100,
-    desc: "Zorlu kış koşullarında Suriye ve Afganistan'daki mülteci ailelere çadır, battaniye ve kışlık giysi desteği ulaştırdık."
-  },
-  {
-    id: 6,
-    slug: 'kuran-kursu-egitim-merkezi',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80',
-    category: 'Eğitim',
-    categoryColor: 'bg-orange-500',
-    title: 'Kur\'an Kursu ve Eğitim Merkezi',
-    status: 'Devam Ediyor',
-    location: 'Bosna Hersek',
-    target: '1 merkez',
-    reached: 'İnşaat aşamasında',
-    percent: 55,
-    desc: "Bosna Hersek'te ihtiyaç duyulan eğitim merkezinin inşaatı tüm hızıyla sürmektedir. Tamamlandığında yıllık 500+ öğrenciye hizmet verecektir."
-  },
+  }
 ];
 
 export default function Projeler() {
   return (
     <div className="min-h-screen">
-      {/* Hero */}
       <div className="relative h-[350px] md:h-[420px] overflow-hidden">
-        <Image src="https://images.unsplash.com/photo-1593113565637-5271d09f9f11?auto=format&fit=crop&w=1920&q=80" alt="Projelerimiz" fill className="object-cover" />
+        <Image src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1920&q=80" alt="Projelerimiz" fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d3b6e]/90 via-[#0d3b6e]/75 to-[#2471a3]/60"></div>
-        
-        {/* Decorative Elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
         
@@ -115,33 +42,10 @@ export default function Projeler() {
                 Dünyanın dört bir yanında yürüttüğümüz, hayat kurtaran ve gelecek inşa eden projelerimizle 
                 umut olmaya devam ediyoruz.
               </p>
-              <div className="flex items-center gap-6 mt-8 text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-[#e67e22] flex items-center justify-center">
-                    <i className="fas fa-folder-open text-white"></i>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-white">48</div>
-                    <div className="text-white/70 text-xs">Aktif Proje</div>
-                  </div>
-                </div>
-                <div className="w-px h-12 bg-white/20"></div>
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-[#059669] flex items-center justify-center">
-                    <i className="fas fa-earth-europe text-white"></i>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-white">18</div>
-                    <div className="text-white/70 text-xs">Ülke</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Category Filter */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 py-4 overflow-x-auto scrollbar-hide">
@@ -161,8 +65,6 @@ export default function Projeler() {
           </div>
         </div>
       </div>
-
-      {/* Projects Grid */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -212,8 +114,6 @@ export default function Projeler() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-[#0d3b6e] via-[#1a5276] to-[#2471a3] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,7 +19,6 @@ const banks = [
 export default function Bagis() {
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
       <div className="relative h-[300px] md:h-[380px]">
         <Image
           src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1920&q=80"
@@ -43,12 +42,9 @@ export default function Bagis() {
         </div>
       </div>
 
-      {/* Main Donation Section */
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            
-            {/* Intro Text */}
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-[#0d3b6e] mb-4">Hesap Bilgilerimiz</h2>
               <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -57,7 +53,6 @@ export default function Bagis() {
               </p>
             </div>
 
-            {/* Bank Accounts - Main Section */}
             <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10 mb-8">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-12 h-12 bg-[#e67e22]/10 rounded-xl flex items-center justify-center">
@@ -70,34 +65,32 @@ export default function Bagis() {
               </div>
 
               <div className="space-y-4 mb-6">
-                {banks.map((b, i) => {
-                  return (
-                    <div key={i} className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-2 border-gray-100 hover:border-[#059669] transition-all group">
-                      <div className="flex items-start justify-between gap-4 mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#0d3b6e] rounded-lg flex items-center justify-center flex-shrink-0">
-                            <i className={`fas ${b.logo} text-white`}></i>
-                          </div>
-                          <div>
-                            <p className="font-bold text-[#0d3b6e] text-lg">{b.name}</p>
-                            <p className="text-xs text-gray-500">SWIFT: {b.swift}</p>
-                          </div>
+                {banks.map((b, i) => (
+                  <div key={i} className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border-2 border-gray-100 hover:border-[#059669] transition-all group">
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-[#0d3b6e] rounded-lg flex items-center justify-center flex-shrink-0">
+                          <i className={`fas ${b.logo} text-white`}></i>
                         </div>
-                        <button
-                          onClick={() => navigator.clipboard.writeText(b.iban)}
-                          className="px-3 py-1.5 bg-[#059669] hover:bg-[#047857] text-white text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 opacity-0 group-hover:opacity-100"
-                          title="IBAN'ı Kopyala"
-                        >
-                          <i className="fas fa-copy"></i> Kopyala
-                        </button>
+                        <div>
+                          <p className="font-bold text-[#0d3b6e] text-lg">{b.name}</p>
+                          <p className="text-xs text-gray-500">SWIFT: {b.swift}</p>
+                        </div>
                       </div>
-                      <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <p className="text-xs text-gray-500 mb-1">IBAN Numarası</p>
-                        <p className="font-mono text-sm md:text-base font-bold text-gray-700 tracking-wider break-all">{b.iban}</p>
-                      </div>
+                      <button
+                        onClick={() => navigator.clipboard.writeText(b.iban)}
+                        className="px-3 py-1.5 bg-[#059669] hover:bg-[#047857] text-white text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 opacity-0 group-hover:opacity-100"
+                        title="IBAN'ı Kopyala"
+                      >
+                        <i className="fas fa-copy"></i> Kopyala
+                      </button>
                     </div>
-                  );
-                })}
+                    <div className="bg-white p-4 rounded-lg border border-gray-200">
+                      <p className="text-xs text-gray-500 mb-1">IBAN Numarası</p>
+                      <p className="font-mono text-sm md:text-base font-bold text-gray-700 tracking-wider break-all">{b.iban}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               <div className="bg-blue-50 border-l-4 border-[#0d3b6e] p-5 rounded-lg">
@@ -114,12 +107,10 @@ export default function Bagis() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Trust Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">

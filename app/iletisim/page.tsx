@@ -40,7 +40,6 @@ const socials = [
 export default function Iletisim() {
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
       <div className="relative h-[300px] md:h-[380px]">
         <Image
           src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80"
@@ -63,13 +62,9 @@ export default function Iletisim() {
           </div>
         </div>
       </div>
-
-      {/* Contact Form + Info */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
-
-            {/* Form – 3 cols */}
             <div className="lg:col-span-3 bg-white rounded-2xl shadow-md overflow-hidden">
               <div className="bg-gradient-to-r from-[#0d3b6e] to-[#2471a3] px-10 py-6">
                 <h2 className="text-xl font-bold text-white flex items-center gap-3">
@@ -121,11 +116,7 @@ export default function Iletisim() {
                 </form>
               </div>
             </div>
-
-            {/* Contact Info – 2 cols */}
             <div className="lg:col-span-2 flex flex-col gap-6">
-
-              {/* Quick Contact */}
               <div className="bg-white rounded-2xl shadow-md p-7">
                 <h3 className="text-lg font-bold text-[#0d3b6e] mb-5 flex items-center gap-2">
                   <i className="fas fa-headset text-[#e67e22]"></i> Hızlı İletişim
@@ -160,8 +151,6 @@ export default function Iletisim() {
                   </a>
                 </div>
               </div>
-
-              {/* Headquarters */}
               <div className="bg-white rounded-2xl shadow-md p-7">
                 <h3 className="text-lg font-bold text-[#0d3b6e] mb-4 flex items-center gap-2">
                   <i className="fas fa-location-dot text-[#e67e22]"></i> Genel Merkez
@@ -180,8 +169,6 @@ export default function Iletisim() {
                   Google Maps&apos;te Aç <i className="fas fa-external-link-alt text-xs"></i>
                 </a>
               </div>
-
-              {/* Working Hours */}
               <div className="bg-[#0d3b6e] rounded-2xl p-7 text-white">
                 <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
                   <i className="fas fa-clock text-[#e67e22]"></i> Çalışma Saatleri
@@ -208,8 +195,6 @@ export default function Iletisim() {
           </div>
         </div>
       </section>
-
-      {/* Branch Offices */}
       <section className="py-14 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
@@ -235,8 +220,6 @@ export default function Iletisim() {
           </div>
         </div>
       </section>
-
-      {/* Social Media */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">

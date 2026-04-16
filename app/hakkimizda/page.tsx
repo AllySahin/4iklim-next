@@ -18,7 +18,6 @@ export default function Hakkimizda() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
       <div className="relative h-[340px] md:h-[420px]">
         <Image
           src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1920&q=80"
@@ -39,8 +38,6 @@ export default function Hakkimizda() {
           </div>
         </div>
       </div>
-
-      {/* Who we are */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -82,8 +79,6 @@ export default function Hakkimizda() {
           </div>
         </div>
       </section>
-
-      {/* Mission & Vision */}
       <section className="py-20 bg-[#0d3b6e] text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -108,8 +103,6 @@ export default function Hakkimizda() {
           </div>
         </div>
       </section>
-
-      {/* Values */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
@@ -130,8 +123,6 @@ export default function Hakkimizda() {
           </div>
         </div>
       </section>
-
-      {/* Team */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
@@ -152,8 +143,6 @@ export default function Hakkimizda() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
       <section className="py-16 bg-[#059669]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Siz de Bu Yolculuğun Bir Parçası Olun</h2>

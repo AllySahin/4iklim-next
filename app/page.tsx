@@ -1,14 +1,12 @@
-import HeroSlider from '@/components/HeroSlider';
+﻿import HeroSlider from '@/components/HeroSlider';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Home() {
   return (
     <>
-      {/* Hero Slider */}
       <HeroSlider />
 
-      {/* Main Campaign Banner */}
       <section className="w-full mt-10 md:mt-14 mb-0">
         <Link href="/kampanya" className="block w-full">
           <Image
@@ -22,7 +20,6 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Quick Action Cards */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
@@ -84,7 +81,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
@@ -129,7 +125,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Recent Projects */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
@@ -196,7 +191,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-24 bg-gradient-to-r from-[#0d3b6e] to-[#2471a3] relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -220,72 +214,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Recent News */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
-            <div>
-              <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Güncel</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-1">Son Haberler</h2>
-              <div className="w-16 h-1 bg-[#e67e22] rounded"></div>
-            </div>
-            <Link href="/haberler" className="inline-flex items-center gap-2 text-[#0d3b6e] font-semibold text-sm border-2 border-[#0d3b6e] px-5 py-2 rounded-full hover:bg-[#0d3b6e] hover:text-white transition-all self-start md:self-auto">
-              Tüm Haberler <i className="fas fa-arrow-right text-xs"></i>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                image: 'https://images.unsplash.com/photo-1483664852095-d6cc6870702d?auto=format&fit=crop&w=600&q=80',
-                cat: 'Kampanya', catColor: 'bg-[#e67e22]',
-                date: '10 Nisan 2026',
-                title: 'Kış Yardım Kampanyamız Tamamlandı',
-                desc: '2025-2026 kış sezonu boyunca yürüttüğümüz kampanyada 3.200 aileye ulaştık.',
-              },
-              {
-                image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80',
-                cat: 'Eğitim', catColor: 'bg-blue-600',
-                date: '2 Mart 2026',
-                title: 'Yeni Gönüllü Eğitim Programı Başladı',
-                desc: 'Gönüllülerimize yönelik düzenlediğimiz eğitim programına 85 kişi katıldı.',
-              },
-              {
-                image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80',
-                cat: 'Duyuru', catColor: 'bg-[#0d3b6e]',
-                date: '14 Åubat 2026',
-                title: 'Uluslararası Yardım İşbirliği Protokolü İmzalandı',
-                desc: 'Yurt dışı yardım faaliyetleri kapsamında yeni bir işbirliği anlaşması imzaladık.',
-              },
-            ].map((news, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100">
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={news.image}
-                    alt={news.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 ${news.catColor} text-white text-xs font-bold rounded-full`}>{news.cat}</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-xs text-gray-400 mb-3 flex items-center gap-2">
-                    <i className="far fa-calendar text-[#e67e22]"></i> {news.date}
-                  </p>
-                  <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{news.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{news.desc}</p>
-                  <Link href="/haberler" className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm hover:text-[#ca6f1e]">
-                    Devamını Oku <i className="fas fa-arrow-right text-xs"></i>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
+

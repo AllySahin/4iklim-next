@@ -29,7 +29,6 @@ const areas = [
 export default function Gonullu() {
   return (
     <div className="min-h-screen">
-      {/* Hero Banner */}
       <div className="relative h-[300px] md:h-[420px]">
         <Image
           src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1920&q=80"
@@ -52,8 +51,6 @@ export default function Gonullu() {
           </div>
         </div>
       </div>
-
-      {/* Why Volunteer */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
@@ -74,8 +71,6 @@ export default function Gonullu() {
           </div>
         </div>
       </section>
-
-      {/* Process Steps */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -97,8 +92,6 @@ export default function Gonullu() {
           </div>
         </div>
       </section>
-
-      {/* Application Form */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
