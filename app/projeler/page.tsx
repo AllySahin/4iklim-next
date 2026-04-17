@@ -1,24 +1,40 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { prisma } from '@/lib/prisma';
+import { defaultProjects, type ProjectData } from '@/lib/default-data';
 
-export const projects = [
-  {
-    id: 1,
-    slug: 'depremzede-konteyner-ev',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-    category: 'Barınma',
-    categoryColor: 'bg-blue-600',
-    title: 'Depremzede Ailelere Konteyner Ev Projesi',
-    status: 'Devam Ediyor',
-    location: 'Hatay, Kahramanmaraş',
-    target: '500 aile',
-    reached: '347 aile',
-    percent: 69,
-    desc: 'Depremin yıkıcı etkisiyle evsiz kalan ailelere, onurlu ve güvenli bir barınma imkânı sunmak amacıyla hayata geçirilen konteyner kent projemiz devam etmektedir.'
+export const dynamic = 'force-dynamic';
+
+async function getProjects(): Promise<ProjectData[]> {
+  try {
+    const dbProjects = await prisma.project.findMany({
+      where: { isActive: true },
+      orderBy: { createdAt: 'desc' },
+    });
+    if (dbProjects.length > 0) {
+      return dbProjects.map((p) => ({
+        id: p.id,
+        slug: p.slug,
+        image: p.image,
+        category: p.category,
+        categoryColor: p.categoryColor || 'bg-blue-600',
+        title: p.title,
+        status: p.status || 'Devam Ediyor',
+        location: p.location || '',
+        target: p.target || '',
+        reached: p.reached || '',
+        percent: p.percent || 0,
+        desc: p.description || '',
+      }));
+    }
+  } catch {
+    // DB not connected
   }
-];
+  return defaultProjects;
+}
 
-export default function Projeler() {
+export default async function Projeler() {
+  const projects = await getProjects();
   return (
     <div className="min-h-screen">
       <div className="relative h-[350px] md:h-[420px] overflow-hidden">

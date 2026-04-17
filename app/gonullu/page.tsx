@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import VolunteerForm from '@/components/VolunteerForm';
 
 const whyReasons = [
   { icon: 'fa-heart', title: 'Anlamlı Katkı', desc: 'Sahada gördüğünüz dönüşümle bizzat hissedersiniz — her çaba, gerçek bir hayatı etkiler.' },
@@ -13,17 +14,6 @@ const steps = [
   { num: '02', title: 'Değerlendirme', desc: 'Başvurunuz koordinatörlerimiz tarafından 5 iş günü içinde incelenir.' },
   { num: '03', title: 'Oryantasyon Eğitimi', desc: 'Kabul edilen adaylar, ücretsiz oryantasyon programına davet edilir.' },
   { num: '04', title: 'Sahaya Başlayın', desc: 'Eğitim sonrasında tercih ettiğiniz alana atanarak aktif gönüllü olarak göreve başlarsınız.' },
-];
-
-const areas = [
-  'Saha Çalışmaları ve Yardım Dağıtımı',
-  'Eğitim ve Rehberlik',
-  'Organizasyon ve Etkinlik Planlama',
-  'Dijital Medya ve İletişim',
-  'Tercüme / Dil Desteği',
-  'Sağlık ve Psikososyal Destek',
-  'Lojistik ve Tedarik',
-  'Hukuki ve Mali Danışmanlık',
 ];
 
 export default function Gonullu() {
@@ -107,73 +97,7 @@ export default function Gonullu() {
               </p>
             </div>
             <div className="p-8 md:p-10">
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Ad Soyad *</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors" placeholder="Ahmet Yılmaz" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Telefon *</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors" placeholder="05XX XXX XX XX" />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">E-posta *</label>
-                    <input type="email" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors" placeholder="ornek@email.com" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Yaş Grubu</label>
-                    <select className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors">
-                      <option>18–25</option>
-                      <option>26–35</option>
-                      <option>36–45</option>
-                      <option>46–59</option>
-                      <option>60+</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Gönüllü Olmak İstediğiniz Alan *</label>
-                  <select className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors">
-                    {areas.map((a, i) => <option key={i}>{a}</option>)}
-                  </select>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Müsaitlik Durumu</label>
-                    <select className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors">
-                      <option>Hafta içi</option>
-                      <option>Hafta sonu</option>
-                      <option>Her gün</option>
-                      <option>Uzaktan / Online</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Seyahat Edilebilir mi?</label>
-                    <select className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors">
-                      <option>Evet, yurt içi</option>
-                      <option>Evet, yurt içi ve dışı</option>
-                      <option>Hayır, sadece yerel</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Kendinizden Kısaca Bahsedin</label>
-                  <textarea rows={4} className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-[#059669] text-gray-700 transition-colors resize-none" placeholder="Tecrübeleriniz, becerileriniz ve derneğimize katabileceğiniz değerler..."></textarea>
-                </div>
-                <div className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl">
-                  <input type="checkbox" id="kvkk" className="mt-1 accent-[#059669]" />
-                  <label htmlFor="kvkk" className="text-sm text-gray-600 leading-relaxed">
-                    Kişisel verilerimin 6698 sayılı KVKK kapsamında işlenmesini ve dernek faaliyetleri hakkında tarafımla iletişime geçilmesini kabul ediyorum.
-                  </label>
-                </div>
-                <button type="button" className="w-full py-4 bg-[#059669] hover:bg-[#047857] text-white font-bold rounded-xl text-lg transition-colors flex items-center justify-center gap-3 shadow-lg shadow-[#059669]/20">
-                  <i className="fas fa-paper-plane"></i>
-                  Başvurumu Gönder
-                </button>
-              </form>
+              <VolunteerForm />
             </div>
           </div>
         </div>

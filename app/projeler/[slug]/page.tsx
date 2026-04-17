@@ -1,13 +1,42 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { projects } from '../page';
-import { use } from 'react';
+import { prisma } from '@/lib/prisma';
+import { defaultProjects, type ProjectData } from '@/lib/default-data';
 
-export default function ProjeDetay({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
+export const dynamic = 'force-dynamic';
+
+async function getAllProjects(): Promise<ProjectData[]> {
+  try {
+    const dbProjects = await prisma.project.findMany({
+      where: { isActive: true },
+      orderBy: { createdAt: 'desc' },
+    });
+    if (dbProjects.length > 0) {
+      return dbProjects.map((p) => ({
+        id: p.id,
+        slug: p.slug,
+        image: p.image,
+        category: p.category,
+        categoryColor: p.categoryColor || 'bg-blue-600',
+        title: p.title,
+        status: p.status || 'Devam Ediyor',
+        location: p.location || '',
+        target: p.target || '',
+        reached: p.reached || '',
+        percent: p.percent || 0,
+        desc: p.description || '',
+      }));
+    }
+  } catch {
+    // DB not connected
+  }
+  return defaultProjects;
+}
+
+export default async function ProjeDetay({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const projects = await getAllProjects();
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {

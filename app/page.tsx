@@ -1,11 +1,32 @@
 ﻿import HeroSlider from '@/components/HeroSlider';
 import Link from 'next/link';
 import Image from 'next/image';
+import { prisma } from '@/lib/prisma';
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  let dbSlides: { image: string; title: string; subtitle: string; description: string; cta: string; ctaLink: string }[] = [];
+  try {
+    const slides = await prisma.slide.findMany({
+      where: { isActive: true },
+      orderBy: { order: 'asc' },
+    });
+    dbSlides = slides.map((s) => ({
+      image: s.image,
+      title: s.title,
+      subtitle: s.subtitle || '',
+      description: s.description || '',
+      cta: s.ctaText || 'Detaylı Bilgi',
+      ctaLink: s.ctaLink || '/projeler',
+    }));
+  } catch {
+    // DB not connected — will use defaults
+  }
+
   return (
     <>
-      <HeroSlider />
+      <HeroSlider slides={dbSlides} />
 
       <section className="w-full mt-10 md:mt-14 mb-0">
         <Link href="/kampanya" className="block w-full">

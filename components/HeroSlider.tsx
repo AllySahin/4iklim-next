@@ -10,7 +10,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-const slides = [
+interface SlideData {
+  image: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  cta: string;
+  ctaLink: string;
+}
+
+const defaultSlides: SlideData[] = [
   {
     image: '/images/slider-1.jpg',
     title: 'Dört İklimde Umut Taşıyoruz',
@@ -37,7 +46,8 @@ const slides = [
   }
 ];
 
-export default function HeroSlider() {
+export default function HeroSlider({ slides: dbSlides }: { slides?: SlideData[] }) {
+  const slides = dbSlides && dbSlides.length > 0 ? dbSlides : defaultSlides;
   return (
     <div className="relative">
       <Swiper

@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { prisma } from '@/lib/prisma';
 
-const categories = ['Tümü', 'Gıda Yardımı', 'Eğitim', 'Sağlık', 'Su & Sanitasyon', 'Afet'];
+const defaultCategories = ['Tümü', 'Gıda Yardımı', 'Eğitim', 'Sağlık', 'Su & Sanitasyon', 'Afet'];
 
-const photos = [
+const defaultPhotos = [
   {
     src: '/images/galeri-1.jpg',
     cat: 'Gıda Yardımı', title: 'Ramazan Gıda Dağıtımı', loc: 'İdlib, Suriye', span: 'col-span-2 row-span-2',
@@ -50,7 +51,28 @@ const photos = [
   },
 ];
 
-export default function Galeri() {
+export const dynamic = 'force-dynamic';
+
+export default async function Galeri() {
+  let photos = defaultPhotos;
+  let categories = defaultCategories;
+
+  try {
+    const dbImages = await prisma.galleryImage.findMany({ orderBy: { order: 'asc' } });
+    if (dbImages.length > 0) {
+      photos = dbImages.map((img) => ({
+        src: img.src,
+        cat: img.category,
+        title: img.title,
+        loc: img.location || '',
+        span: img.span ? 'col-span-2 row-span-2' : '',
+      }));
+      const uniqueCats = [...new Set(dbImages.map((img) => img.category))];
+      categories = ['Tümü', ...uniqueCats];
+    }
+  } catch {
+    // DB not connected
+  }
   return (
     <div className="min-h-screen">
       <div className="relative h-[300px] md:h-[380px]">
