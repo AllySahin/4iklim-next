@@ -8,7 +8,11 @@ export async function middleware(req: NextRequest) {
   const response = NextResponse.next();
   response.headers.set('x-next-pathname', pathname);
 
-  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+  // /admin ve /admin/login sayfalarını bypass et, diğer admin sayfalarını koru
+  const isAdminRoute = pathname.startsWith('/admin');
+  const isPublicAdminRoute = pathname === '/admin' || pathname === '/admin/login';
+  
+  if (isAdminRoute && !isPublicAdminRoute) {
     const token = await getToken({ req, secret: process.env.AUTH_SECRET });
     if (!token) {
       return NextResponse.redirect(new URL('/admin/login', req.url));
