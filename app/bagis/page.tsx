@@ -12,8 +12,6 @@ const trustItems = [
 
 const banks = [
   { name: 'Ziraat Bankası', iban: 'TR80 0001 0006 2797 6265 3650 01', swift: 'TCZBTR2A', logo: 'fa-building-columns' },
-  { name: 'Kuveyt Türk', iban: 'TR34 0002 0000 0000 0000 0000 02', swift: 'KTEFTRIS', logo: 'fa-building-columns' },
-  { name: 'Türkiye Finans', iban: 'TR56 0003 0000 0000 0000 0000 03', swift: 'AFKBTRIS', logo: 'fa-building-columns' },
 ];
 
 export default function Bagis() {
