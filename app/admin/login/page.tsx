@@ -19,7 +19,7 @@ export default function AdminLoginPage() {
       const result = await signIn('credentials', {
         email,
         password,
-        callbackUrl: '/admin',
+        callbackUrl: '/admin/dashboard',
         redirect: false,
       });
 
@@ -30,9 +30,9 @@ export default function AdminLoginPage() {
         setError(`E-posta veya şifre hatalı. (${result.error})`);
         setLoading(false);
       } else if (result?.ok) {
-        console.log('Login successful, redirecting to /admin');
+        console.log('Login successful, redirecting to /admin/dashboard');
         // Başarılı giriş - hard redirect ile session'ı güncelle
-        window.location.href = '/admin';
+        window.location.href = '/admin/dashboard';
       } else {
         console.log('Unknown result:', result);
         setError('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyin.');

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 
 const navItems = [
-  { href: '/admin', label: 'Dashboard', icon: 'fas fa-tachometer-alt' },
+  { href: '/admin/dashboard', label: 'Dashboard', icon: 'fas fa-tachometer-alt' },
   { href: '/admin/slider', label: 'Slider', icon: 'fas fa-images' },
   { href: '/admin/projeler', label: 'Projeler', icon: 'fas fa-project-diagram' },
   { href: '/admin/galeri', label: 'Galeri', icon: 'fas fa-photo-video' },
@@ -23,13 +23,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen flex bg-gray-100">
       <aside className="w-64 bg-[#0d3b6e] text-white flex flex-col">
         <div className="p-6 border-b border-white/20">
-          <Link href="/admin" className="text-xl font-bold">
+          <Link href="/admin/dashboard" className="text-xl font-bold">
             4 İklim Admin
           </Link>
         </div>
         <nav className="flex-1 py-4">
           {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
+            const isActive = pathname === item.href || (item.href !== '/admin/dashboard' && pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
