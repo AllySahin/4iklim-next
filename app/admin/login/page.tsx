@@ -20,6 +20,7 @@ export default function AdminLoginPage() {
       const result = await signIn('credentials', {
         email,
         password,
+        callbackUrl: '/admin',
         redirect: false,
       });
 
@@ -27,8 +28,9 @@ export default function AdminLoginPage() {
         setError('E-posta veya şifre hatalı.');
         setLoading(false);
       } else if (result?.ok) {
-        // Başarılı giriş - yönlendirme yap
-        window.location.href = '/admin';
+        // Başarılı giriş - dashboard'a yönlendir
+        router.push('/admin');
+        router.refresh();
       } else {
         setError('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyin.');
         setLoading(false);

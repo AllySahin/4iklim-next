@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 interface Stats {
@@ -11,38 +13,63 @@ interface Stats {
 }
 
 export default function AdminDashboard() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [stats, setStats] = useState<Stats>({ slides: 0, projects: 0, gallery: 0, volunteers: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchStats() {
-      try {
-        const [slidesRes, projectsRes, galleryRes, volunteersRes] = await Promise.all([
-          fetch('/api/slides'),
-          fetch('/api/projects'),
-          fetch('/api/gallery'),
-          fetch('/api/volunteers'),
-        ]);
-        const [slides, projects, gallery, volunteers] = await Promise.all([
-          slidesRes.json(),
-          projectsRes.json(),
-          galleryRes.json(),
-          volunteersRes.json(),
-        ]);
-        setStats({
-          slides: Array.isArray(slides) ? slides.length : 0,
-          projects: Array.isArray(projects) ? projects.length : 0,
-          gallery: Array.isArray(gallery) ? gallery.length : 0,
-          volunteers: Array.isArray(volunteers) ? volunteers.length : 0,
-        });
-      } catch {
-        // API not connected yet
-      } finally {
-        setLoading(false);
-      }
+    if (status === 'unauthenticated') {
+      router.push('/admin/login');
     }
-    fetchStats();
-  }, []);
+  }, [status, router]);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      async function fetchStats() {
+        try {
+          const [slidesRes, projectsRes, galleryRes, volunteersRes] = await Promise.all([
+            fetch('/api/slides'),
+            fetch('/api/projects'),
+            fetch('/api/gallery'),
+            fetch('/api/volunteers'),
+          ]);
+          const [slides, projects, gallery, volunteers] = await Promise.all([
+            slidesRes.json(),
+            projectsRes.json(),
+            galleryRes.json(),
+            volunteersRes.json(),
+          ]);
+          setStats({
+            slides: Array.isArray(slides) ? slides.length : 0,
+            projects: Array.isArray(projects) ? projects.length : 0,
+            gallery: Array.isArray(gallery) ? gallery.length : 0,
+            volunteers: Array.isArray(volunteers) ? volunteers.length : 0,
+          });
+        } catch {
+          // API not connected yet
+        } finally {
+          setLoading(false);
+        }
+      }
+      fetchStats();
+    }
+  }, [status]);
+
+  if (status === 'loading') {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center">
+          <i className="fas fa-spinner fa-spin text-3xl text-gray-400 mb-2"></i>
+          <p className="text-gray-500">Yükleniyor...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (status === 'unauthenticated') {
+    return null;
+  }
 
   const cards = [
     { label: 'Slider', count: stats.slides, icon: 'fas fa-images', color: 'bg-blue-500', href: '/admin/slider' },
