@@ -7,6 +7,8 @@ export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   let dbSlides: { image: string; title: string; subtitle: string; description: string; cta: string; ctaLink: string }[] = [];
+  let dbProjects: any[] = [];
+  
   try {
     const slides = await prisma.slide.findMany({
       where: { isActive: true },
@@ -20,6 +22,14 @@ export default async function Home() {
       cta: s.ctaText || 'Detaylı Bilgi',
       ctaLink: s.ctaLink || '/projeler',
     }));
+
+    // Son 3 projeyi getir
+    const projects = await prisma.project.findMany({
+      where: { isActive: true },
+      orderBy: { createdAt: 'desc' },
+      take: 3,
+    });
+    dbProjects = projects;
   } catch {
     // DB not connected — will use defaults
   }
@@ -245,54 +255,81 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                slug: 'depremzede-konteyner-ev',
-                image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
-                badge: 'Barınma', badgeColor: 'bg-blue-600',
-                title: 'Depremzede Ailelere Konteyner Ev Projesi',
-                desc: 'Doğal afet mağdurları için geçici barınma imkânı sağlayan konteyner ev kampanyamız devam etmektedir.',
-                status: 'Devam Ediyor',
-              },
-              {
-                slug: 'okul-cantasi-kirtasiye',
-                image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80',
-                badge: 'Eğitim', badgeColor: 'bg-[#e67e22]',
-                title: 'Kırtasiye ve Eğitim Seti Dağıtımı',
-                desc: 'Her yıl düzenlenen okul başı kampanyamızda binlerce öğrenciye kırtasiye ve okul çantası ulaştırıyoruz.',
-                status: 'Tamamlandı',
-              },
-              {
-                slug: 'ramazan-gida-paketi',
-                image: 'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&w=600&q=80',
-                badge: 'Gıda', badgeColor: 'bg-[#059669]',
-                title: 'Ramazan Gıda Paketi Dağıtımı',
-                desc: 'Ramazan ayı boyunca ihtiyaç sahibi ailelere temel gıda paketleri ve iftar yemekleri ulaştırıyoruz.',
-                status: 'Devam Ediyor',
-              },
-            ].map((project, i) => (
-              <Link key={i} href={`/projeler/${project.slug}`} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className={`px-3 py-1 ${project.badgeColor} text-white text-xs font-bold rounded-full`}>{project.badge}</span>
-                    <span className={`px-3 py-1 text-xs font-bold rounded-full ${project.status === 'Devam Ediyor' ? 'bg-white text-[#059669] border border-[#059669]' : 'bg-white text-gray-600 border border-gray-300'}`}>{project.status}</span>
+            {dbProjects.length > 0 ? (
+              dbProjects.map((project) => (
+                <Link key={project.id} href={`/projeler/${project.slug}`} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <span className={`px-3 py-1 ${project.categoryColor} text-white text-xs font-bold rounded-full`}>{project.category}</span>
+                      <span className={`px-3 py-1 text-xs font-bold rounded-full ${project.status === 'Devam Ediyor' ? 'bg-white text-[#059669] border border-[#059669]' : 'bg-white text-gray-600 border border-gray-300'}`}>{project.status}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{project.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{project.desc}</p>
-                  <div className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm group-hover:text-[#ca6f1e]">
-                    Detayları gör <i className="fas fa-arrow-right text-xs"></i>
+                  <div className="p-6">
+                    <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{project.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-5">{project.description?.substring(0, 100)}...</p>
+                    <div className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm group-hover:text-[#ca6f1e]">
+                      Detayları gör <i className="fas fa-arrow-right text-xs"></i>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            ) : (
+              // Fallback projeler
+              [
+                {
+                  slug: 'ogrenci-burslari',
+                  image: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80',
+                  badge: 'Eğitim', badgeColor: 'bg-orange-600',
+                  title: 'Öğrenci Bursları',
+                  desc: 'İhtiyaç sahibi öğrencilere eğitim bursu sağlayarak geleceklerine yatırım yapıyoruz.',
+                  status: 'Devam Ediyor',
+                },
+                {
+                  slug: 'kira-yardimi',
+                  image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80',
+                  badge: 'Barınma', badgeColor: 'bg-green-600',
+                  title: 'Kira Yardımı',
+                  desc: 'Barınma sıkıntısı çeken ailelere düzenli kira desteği sunuyoruz.',
+                  status: 'Devam Ediyor',
+                },
+                {
+                  slug: 'ihtiyac-sahipleri',
+                  image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80',
+                  badge: 'Gıda', badgeColor: 'bg-blue-600',
+                  title: 'İhtiyaç Sahiplerine Destek',
+                  desc: 'Gıda, giyim ve diğer temel ihtiyaçlar için destek sağlıyoruz.',
+                  status: 'Devam Ediyor',
+                },
+              ].map((project, i) => (
+                <Link key={i} href={`/projeler/${project.slug}`} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <span className={`px-3 py-1 ${project.badgeColor} text-white text-xs font-bold rounded-full`}>{project.badge}</span>
+                      <span className={`px-3 py-1 text-xs font-bold rounded-full ${project.status === 'Devam Ediyor' ? 'bg-white text-[#059669] border border-[#059669]' : 'bg-white text-gray-600 border border-gray-300'}`}>{project.status}</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-[16px] font-bold text-[#0d3b6e] mb-2 group-hover:text-[#2471a3] transition-colors leading-snug">{project.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-5">{project.desc}</p>
+                    <div className="inline-flex items-center gap-2 text-[#e67e22] font-semibold text-sm group-hover:text-[#ca6f1e]">
+                      Detayları gör <i className="fas fa-arrow-right text-xs"></i>
+                    </div>
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
         </div>
       </section>
