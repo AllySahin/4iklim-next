@@ -17,6 +17,7 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
+      console.log('Login attempt with:', { email });
       const result = await signIn('credentials', {
         email,
         password,
@@ -24,20 +25,25 @@ export default function AdminLoginPage() {
         redirect: false,
       });
 
+      console.log('SignIn result:', result);
+
       if (result?.error) {
-        setError('E-posta veya şifre hatalı.');
+        console.error('SignIn error:', result.error);
+        setError(`E-posta veya şifre hatalı. (${result.error})`);
         setLoading(false);
       } else if (result?.ok) {
+        console.log('Login successful, redirecting to /admin');
         // Başarılı giriş - dashboard'a yönlendir
         router.push('/admin');
         router.refresh();
       } else {
+        console.log('Unknown result:', result);
         setError('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyin.');
         setLoading(false);
       }
     } catch (err) {
       console.error('Login error:', err);
-      setError('Bağlantı hatası. Lütfen tekrar deneyin.');
+      setError(`Bağlantı hatası: ${err instanceof Error ? err.message : 'Bilinmeyen hata'}`);
       setLoading(false);
     }
   };
