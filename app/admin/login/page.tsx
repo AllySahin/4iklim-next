@@ -2,10 +2,8 @@
 
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -33,9 +31,8 @@ export default function AdminLoginPage() {
         setLoading(false);
       } else if (result?.ok) {
         console.log('Login successful, redirecting to /admin');
-        // Başarılı giriş - dashboard'a yönlendir
-        router.push('/admin');
-        router.refresh();
+        // Başarılı giriş - hard redirect ile session'ı güncelle
+        window.location.href = '/admin';
       } else {
         console.log('Unknown result:', result);
         setError('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyin.');

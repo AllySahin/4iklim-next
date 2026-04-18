@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 interface Stats {
@@ -14,15 +13,14 @@ interface Stats {
 
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
-  const router = useRouter();
   const [stats, setStats] = useState<Stats>({ slides: 0, projects: 0, gallery: 0, volunteers: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
-      router.push('/admin/login');
+      window.location.href = '/admin/login';
     }
-  }, [status, router]);
+  }, [status]);
 
   useEffect(() => {
     if (status === 'authenticated') {
