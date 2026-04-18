@@ -5,7 +5,7 @@ const offices = [
   {
     city: 'İstanbul (Genel Merkez)',
     address: 'Fatih Mahallesi, İstiklal Caddesi No:120, Fatih / İstanbul',
-    phone: '+90 212 555 00 00',
+    phone: '0537 363 33 33 / 0540 344 14 14',
     email: 'info@4iklim.org',
     hours: 'Pzt–Cum: 09:00–18:00',
     icon: 'fa-building',
@@ -13,7 +13,7 @@ const offices = [
   {
     city: 'Ankara Temsilciliği',
     address: 'Kızılay Mahallesi, Atatürk Bulvarı No:45, Çankaya / Ankara',
-    phone: '+90 312 444 00 00',
+    phone: '0537 363 33 33',
     email: 'ankara@4iklim.org',
     hours: 'Pzt–Cum: 09:00–17:30',
     icon: 'fa-map-location-dot',
@@ -21,7 +21,7 @@ const offices = [
   {
     city: 'İzmir Temsilciliği',
     address: 'Konak Mahallesi, Cumhuriyet Bulvarı No:78, Konak / İzmir',
-    phone: '+90 232 333 00 00',
+    phone: '0540 344 14 14',
     email: 'izmir@4iklim.org',
     hours: 'Pzt–Cum: 09:00–17:30',
     icon: 'fa-map-location-dot',
@@ -34,7 +34,7 @@ const socials = [
   { icon: 'fa-brands fa-facebook-f', label: 'Facebook', handle: '4 İklim Derneği', color: 'from-blue-700 to-blue-500' },
   { icon: 'fa-brands fa-youtube', label: 'YouTube', handle: '4 İklim TV', color: 'from-red-600 to-red-500' },
   { icon: 'fa-brands fa-linkedin-in', label: 'LinkedIn', handle: '4İklim İnsani Yardım', color: 'from-blue-800 to-blue-600' },
-  { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', handle: '+90 555 000 0000', color: 'from-green-600 to-green-500' },
+  { icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', handle: '0537 363 33 33', color: 'from-green-600 to-green-500' },
 ];
 
 export default function Iletisim() {
@@ -122,22 +122,22 @@ export default function Iletisim() {
                   <i className="fas fa-headset text-[#e67e22]"></i> Hızlı İletişim
                 </h3>
                 <div className="space-y-4">
-                  <a href="tel:+902125550000" className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                  <a href="tel:+905373633333" className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
                     <div className="w-10 h-10 bg-[#0d3b6e]/10 rounded-full flex items-center justify-center group-hover:bg-[#0d3b6e]/20 transition-colors">
                       <i className="fas fa-phone text-[#0d3b6e] text-sm"></i>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400">Telefon</p>
-                      <p className="font-semibold text-gray-700 text-sm">+90 212 555 00 00</p>
+                      <p className="text-xs text-gray-400">Telefon 1</p>
+                      <p className="font-semibold text-gray-700 text-sm">0537 363 33 33</p>
                     </div>
                   </a>
-                  <a href="tel:+908503330000" className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                  <a href="tel:+905403441414" className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
                     <div className="w-10 h-10 bg-[#e67e22]/10 rounded-full flex items-center justify-center group-hover:bg-[#e67e22]/20 transition-colors">
                       <i className="fas fa-phone-volume text-[#e67e22] text-sm"></i>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400">Bağış Hattı</p>
-                      <p className="font-semibold text-gray-700 text-sm">0850 333 00 00</p>
+                      <p className="text-xs text-gray-400">Telefon 2</p>
+                      <p className="font-semibold text-gray-700 text-sm">0540 344 14 14</p>
                     </div>
                   </a>
                   <a href="mailto:info@4iklim.org" className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">

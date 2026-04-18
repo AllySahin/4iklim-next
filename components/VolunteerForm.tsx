@@ -42,17 +42,29 @@ export default function VolunteerForm() {
       const res = await fetch('/api/volunteers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          travel: form.travel.startsWith('Evet'),
-        }),
+        body: JSON.stringify(form),
       });
       if (res.ok) {
         setSuccess(true);
+        // Formu sıfırla
+        setForm({
+          fullName: '',
+          phone: '',
+          email: '',
+          ageGroup: '18–25',
+          area: areas[0],
+          availability: 'Hafta içi',
+          travel: 'Evet, yurt içi',
+          note: '',
+          kvkkConsent: false,
+        });
       } else {
+        const error = await res.json();
+        console.error('Hata:', error);
         alert('Başvuru gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
       }
-    } catch {
+    } catch (err) {
+      console.error('Bağlantı hatası:', err);
       alert('Bağlantı hatası. Lütfen tekrar deneyin.');
     } finally {
       setLoading(false);

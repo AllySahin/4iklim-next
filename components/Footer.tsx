@@ -113,15 +113,15 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <i className="fas fa-phone text-[#e67e22] flex-shrink-0"></i>
-                <a href="tel:+902120000000" className="hover:text-white transition-colors">+90 (212) 000 00 00</a>
+                <a href="tel:+905373633333" className="hover:text-white transition-colors">0537 363 33 33</a>
               </li>
               <li className="flex items-center gap-3">
-                <i className="fas fa-phone-volume text-[#e67e22] flex-shrink-0"></i>
-                <a href="tel:+908503330000" className="hover:text-white transition-colors">0850 333 00 00 (Bağış Hattı)</a>
+                <i className="fas fa-phone text-[#e67e22] flex-shrink-0"></i>
+                <a href="tel:+905403441414" className="hover:text-white transition-colors">0540 344 14 14</a>
               </li>
               <li className="flex items-center gap-3">
                 <i className="fas fa-envelope text-[#e67e22] flex-shrink-0"></i>
-                <a href="mailto:info@4iklim.org.tr" className="hover:text-white transition-colors">info@4iklim.org.tr</a>
+                <a href="mailto:info@4iklim.org" className="hover:text-white transition-colors">info@4iklim.org</a>
               </li>
             </ul>
           </div>

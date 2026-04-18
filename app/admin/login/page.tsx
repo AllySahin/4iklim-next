@@ -16,17 +16,27 @@ export default function AdminLoginPage() {
     setError('');
     setLoading(true);
 
-    const result = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      const result = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
 
-    if (result?.error) {
-      setError('E-posta veya şifre hatalı.');
+      if (result?.error) {
+        setError('E-posta veya şifre hatalı.');
+        setLoading(false);
+      } else if (result?.ok) {
+        // Başarılı giriş - yönlendirme yap
+        window.location.href = '/admin';
+      } else {
+        setError('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyin.');
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Bağlantı hatası. Lütfen tekrar deneyin.');
       setLoading(false);
-    } else {
-      router.push('/admin');
     }
   };
 

@@ -10,7 +10,7 @@ interface Volunteer {
   ageGroup: string;
   area: string;
   availability: string;
-  travel: boolean;
+  travel: string;
   note: string;
   kvkkConsent: boolean;
   status: string;
@@ -146,10 +146,16 @@ export default function VolunteerManagementPage() {
                     </td>
                     <td className="px-5 py-4 text-sm text-gray-600">{v.availability}</td>
                     <td className="px-5 py-4 text-center">
-                      {v.travel ? (
-                        <i className="fas fa-check text-green-500"></i>
+                      {v.travel && v.travel.includes('Evet') ? (
+                        <span className="inline-flex items-center gap-1 text-xs text-green-600">
+                          <i className="fas fa-check-circle"></i>
+                          <span className="hidden lg:inline">{v.travel}</span>
+                        </span>
                       ) : (
-                        <i className="fas fa-times text-gray-300"></i>
+                        <span className="inline-flex items-center gap-1 text-xs text-gray-400">
+                          <i className="fas fa-times-circle"></i>
+                          <span className="hidden lg:inline">{v.travel || 'Belirtilmedi'}</span>
+                        </span>
                       )}
                     </td>
                     <td className="px-5 py-4 text-center">

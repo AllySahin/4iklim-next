@@ -45,6 +45,68 @@ export default function Bagis() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            {/* Kurban Bağışı Özel Bölümü */}
+            <div className="bg-gradient-to-br from-[#059669] to-[#047857] rounded-3xl shadow-2xl p-8 md:p-12 mb-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full -ml-24 -mb-24"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center">
+                    <i className="fas fa-hand-holding-heart text-white text-2xl"></i>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white">Kurban Bağışlarınızı Kabul Ediyoruz</h3>
+                    <p className="text-white/90 text-sm mt-1">Afrika ve Türkiye'de ihtiyaç sahiplerine ulaştırıyoruz</p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i className="fas fa-globe-africa text-white text-xl"></i>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg mb-2">Afrika'da Kurban</h4>
+                        <p className="text-white/90 text-sm leading-relaxed">
+                          Fildişi Sahili, Senegal, Uganda, Nijer ve diğer Afrika ülkelerinde ihtiyaç sahibi ailelere kurbanlarınızı ulaştırıyoruz.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i className="fas fa-map-marker-alt text-white text-xl"></i>
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg mb-2">Türkiye'de Kurban</h4>
+                        <p className="text-white/90 text-sm leading-relaxed">
+                          Türkiye'nin farklı bölgelerindeki ihtiyaç sahibi aileler ve mazlumlar için kurban bağışlarınızı kabul ediyoruz.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/15 backdrop-blur-lg rounded-xl p-5 border border-white/25">
+                  <div className="flex items-start gap-3">
+                    <i className="fas fa-info-circle text-white text-lg mt-0.5"></i>
+                    <div className="flex-1">
+                      <p className="text-white font-semibold mb-2">Kurban Bağışı Nasıl Yapılır?</p>
+                      <p className="text-white/95 text-sm leading-relaxed">
+                        Kurban bağışınız için aşağıdaki hesaplarımıza havale/EFT yapabilirsiniz. 
+                        <span className="font-bold"> Açıklama kısmına "Kurban - Afrika" veya "Kurban - Türkiye"</span> yazarak 
+                        bağışınızın nereye ulaştırılmasını istediğinizi belirtebilirsiniz.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-[#0d3b6e] mb-4">Hesap Bilgilerimiz</h2>
               <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">

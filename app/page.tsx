@@ -43,6 +43,91 @@ export default async function Home() {
 
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Faaliyet Alanlarımız</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-4">Neler Yapıyoruz?</h2>
+            <div className="w-16 h-1 bg-[#e67e22] mx-auto rounded"></div>
+            <p className="text-gray-600 mt-6 max-w-3xl mx-auto text-lg">
+              Ticari kaygı gütmeyen derneğimiz, şeffaflık ilkesi ile yürüttüğü projelerle<br className="hidden md:block" /> Türkiye ve Afrika'da binlerce insana umut oluyor.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: 'fa-graduation-cap',
+                color: 'text-[#e67e22]',
+                bg: 'bg-[#e67e22]/10',
+                title: 'Öğrenci Bursları',
+                desc: 'İhtiyaç sahibi öğrencilere eğitim bursu sağlayarak geleceklerine yatırım yapıyoruz.'
+              },
+              {
+                icon: 'fa-home',
+                color: 'text-[#059669]',
+                bg: 'bg-[#059669]/10',
+                title: 'Kira Yardımı',
+                desc: 'Barınma sıkıntısı çeken ailelere düzenli kira desteği sunuyoruz.'
+              },
+              {
+                icon: 'fa-hands-holding-circle',
+                color: 'text-[#0d3b6e]',
+                bg: 'bg-[#0d3b6e]/10',
+                title: 'İhtiyaç Sahipleri',
+                desc: 'Gıda, giyim, ısınma ve diğer temel ihtiyaçlar için destek sağlıyoruz.'
+              },
+              {
+                icon: 'fa-book-quran',
+                color: 'text-[#8e44ad]',
+                bg: 'bg-[#8e44ad]/10',
+                title: 'Afrika\'da Kuran Dağıtımı',
+                desc: 'Afrika ülkelerinde Kuran-ı Kerim dağıtımı ve din eğitimi programları yürütüyoruz.'
+              },
+              {
+                icon: 'fa-droplet',
+                color: 'text-[#3498db]',
+                bg: 'bg-[#3498db]/10',
+                title: 'Su Kuyusu',
+                desc: 'Temiz suya erişimi olmayan bölgelerde su kuyuları açıyor, hayat kaynağı oluyoruz.'
+              },
+              {
+                icon: 'fa-mosque',
+                color: 'text-[#16a085]',
+                bg: 'bg-[#16a085]/10',
+                title: 'Medrese ve Cami Yapımı',
+                desc: 'Eğitim ve ibadet merkezleri inşa ederek kalıcı katkılar sunuyoruz.'
+              },
+            ].map((activity, i) => (
+              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-8 hover:border-gray-300 hover:shadow-xl transition-all duration-300 group">
+                <div className={`w-16 h-16 ${activity.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
+                  <i className={`fas ${activity.icon} text-2xl ${activity.color}`}></i>
+                </div>
+                <h3 className="text-xl font-bold text-[#0d3b6e] mb-3">{activity.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{activity.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-[#0d3b6e]/5 to-[#059669]/5 rounded-2xl p-8 border-l-4 border-[#0d3b6e]">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+                <div className="w-12 h-12 bg-[#0d3b6e]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i className="fas fa-shield-halved text-[#0d3b6e] text-xl"></i>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-[#0d3b6e] mb-2">Şeffaflık ve Güvenilirlik</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    <strong>Ticari kaygı gütmeyen</strong> bir sivil toplum kuruluşu olarak tüm faaliyetlerimizi 
+                    şeffaflık ilkesi içerisinde yürütüyor, her kuruşun hesabını bağışçılarımıza raporlarımızla sunuyoruz.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-14">
             <p className="text-sm font-semibold text-[#e67e22] uppercase tracking-widest mb-3">Harekete Geç</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0d3b6e] mb-4">Ne Yapmak İstiyorsunuz?</h2>
@@ -102,7 +187,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className="relative">

@@ -50,6 +50,9 @@ export default function Hakkimizda() {
               <p className="text-gray-600 mb-5 leading-relaxed text-lg">
                 2010 yılında kurulan <strong className="text-[#0d3b6e]">4 İklim İnsani Yardım Derneği</strong>, din, dil, ırk ve mezhep ayrımı gözetmeksizin dünyanın dört bir yanındaki mazlum, mağdur ve muhtaç insanların yardımına koşmayı şiar edinmiş bir sivil toplum kuruluşudur.
               </p>
+              <p className="text-gray-600 mb-5 leading-relaxed">
+                <strong className="text-[#0d3b6e]">Ticari kaygı gütmeyen</strong> derneğimiz, tüm faaliyetlerini <strong className="text-[#0d3b6e]">şeffaflık ilkesi</strong> içerisinde yürütmekte ve her kuruşun hesabını bağışçılarımıza düzenli raporlarla sunmaktadır.
+              </p>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 Çıktığımız bu iyilik yolculuğunda asıl gayemiz; insanların geçici ihtiyaçlarını gidermekle kalmayıp kalıcı ve sürdürülebilir projeler üreterek onların kendi ayakları üzerinde durabilmelerine destek olmaktır.
               </p>
